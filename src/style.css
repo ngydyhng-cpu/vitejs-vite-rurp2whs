@@ -1,5 +1,5 @@
 /* Thiết lập chung để ngăn chặn tràn màn hình trên điện thoại */
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -37,14 +37,31 @@ img {
   border-radius: 6px;
 }
 
-/* Các ô tìm kiếm, bộ lọc căn dọc gọn gàng */
+/* Khung chứa bộ lọc / tìm kiếm (Giúp căn chỉnh các ô lọc nằm cạnh nhau hoặc xuống dòng hợp lý) */
+.filter-container, form, .search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100% !important;
+}
+
+/* Các ô tìm kiếm, bộ lọc căn chỉnh gọn gàng, tự động co giãn theo khung chứa */
 input, select, button {
+  flex: 1 1 100%; /* Đảm bảo trên màn hình nhỏ mỗi ô chiếm 1 dòng, hoặc tự chia đều khi đủ chỗ */
   width: 100% !important;
   max-width: 100% !important;
-  padding: 10px;
+  min-width: 0; /* Quan trọng: Ngăn chặn flex item bị tràn kích thước do nội dung dài */
+  padding: 10px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 15px; /* Giữ chữ vừa vặn, tránh quá lớn gây cụt chữ */
   border-radius: 6px;
   border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+/* Riêng thẻ select để hiển thị đầy đủ văn bản và icon mũi tên */
+select {
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
