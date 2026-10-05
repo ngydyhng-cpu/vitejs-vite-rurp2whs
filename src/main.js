@@ -77,7 +77,7 @@ function renderApp(roomsToDisplay) {
         </div>
 
         <div style="display: flex; align-items: center; gap: 8px; background: #f8fafc; padding: 8px 14px; border-radius: 20px; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600;">
-          <span>📍</span> <span>Thái Nguyên - An toàn & Tiết kiệm</span>
+          <span>📍Địa chỉ:</span> <span> Phan Đình Phùng - Thái Nguyên</span>
         </div>
 
         <div style="background: #eff6ff; color: #1d4ed8; padding: 8px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; border: 1px solid #bfdbfe;">
