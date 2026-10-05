@@ -88,7 +88,7 @@ function renderApp(roomsToDisplay) {
 
       <!-- Slogan -->
       <div style="max-width: 900px; margin: 0 auto 25px auto;">
-        <p style="color: #1e293b; font-size: 15px; line-height: 1.6; font-style: italic; font-weight: 600; text-align: center; background: #ffffff; padding: 18px 22px; border-radius: 12px; border: 1px solid #e2e8f0;">
+        <p style="color: #1e293b; font-size: 20px; line-height: 1.6; font-style: italic; font-weight: 600; text-align: center; background: #ffffff; padding: 18px 22px; border-radius: 12px; border: 1px solid #e2e8f0;">
           "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn, đặc biệt là sinh viên năm nhất trường Đại học Khoa học - Thái Nguyên, dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
         </p>
       </div>
