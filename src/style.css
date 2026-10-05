@@ -1,4 +1,4 @@
-/* Thiết lập chung để ngăn chặn tràn màn hình trên điện thoại */
+/* Thiết lập chung để ngăn chặn tràn màn hình */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -13,14 +13,17 @@ body {
   background-color: #f8f9fa;
 }
 
-/* Đảm bảo tất cả các thẻ chứa, khung, ảnh không bị vượt quá chiều rộng màn hình điện thoại */
-div, section, header, footer, img, table {
+/* Buộc tất cả các thẻ không được vượt quá 100% màn hình */
+div, section, header, footer, img, table, p, span, h1, h2, h3, h4 {
   max-width: 100% !important;
+  word-break: break-word; /* Tự động xuống dòng khi gặp chữ dài */
+  overflow-wrap: break-word;
 }
 
-/* Tối ưu hóa các khối giao diện / thẻ card phòng trọ */
+/* Thẻ card phòng trọ hiển thị theo dạng cột, ngăn tràn */
 .room-card, .card, .item {
   width: 100% !important;
+  max-width: 100% !important;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -28,40 +31,25 @@ div, section, header, footer, img, table {
   padding: 10px;
   margin-bottom: 12px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  overflow: hidden; /* Cắt gọn nội dung nếu bị thừa */
 }
 
-/* Ảnh phòng tự động co giãn vừa khít điện thoại */
+/* Ảnh phòng tự động co giãn vừa khít */
 img {
+  width: 100% !important;
   height: auto;
   object-fit: cover;
   border-radius: 6px;
 }
 
-/* Khung chứa bộ lọc / tìm kiếm (Giúp căn chỉnh các ô lọc nằm cạnh nhau hoặc xuống dòng hợp lý) */
-.filter-container, form, .search-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  width: 100% !important;
-}
-
-/* Các ô tìm kiếm, bộ lọc căn chỉnh gọn gàng, tự động co giãn theo khung chứa */
+/* Các ô tìm kiếm, bộ lọc căn dọc gọn gàng */
 input, select, button {
-  flex: 1 1 100%; /* Đảm bảo trên màn hình nhỏ mỗi ô chiếm 1 dòng, hoặc tự chia đều khi đủ chỗ */
   width: 100% !important;
   max-width: 100% !important;
-  min-width: 0; /* Quan trọng: Ngăn chặn flex item bị tràn kích thước do nội dung dài */
-  padding: 10px 12px;
+  padding: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 15px; /* Giữ chữ vừa vặn, tránh quá lớn gây cụt chữ */
+  font-size: 16px;
   border-radius: 6px;
   border: 1px solid #ddd;
-  background-color: #fff;
-}
-
-/* Riêng thẻ select để hiển thị đầy đủ văn bản và icon mũi tên */
-select {
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
