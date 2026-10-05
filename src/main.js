@@ -66,22 +66,26 @@ function renderApp(roomsToDisplay) {
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); min-height: 100vh; padding: 20px 15px; color: #334155;">
       
       <!-- Header -->
-      <header style="max-width: 900px; margin: 0 auto 20px auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; background: #ffffff; padding: 16px 25px; border-radius: 14px; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.08); border-left: 6px solid #2563eb;">
+      <header style="max-width: 900px; margin: 0 auto 20px auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; background: #ffffff; padding: 22px 30px; border-radius: 16px; box-shadow: 0 4px 16px rgba(30, 58, 138, 0.08); border-left: 6px solid #2563eb;">
         
-        <div style="display: flex; align-items: center; gap: 14px;">
-          <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 65px; height: 65px; object-fit: contain; border-radius: 50%; background: #fff; padding: 2px; border: 2px solid #2563eb;" />
+        <!-- Cụm Logo và Tiêu đề chính -->
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 75px; height: 75px; object-fit: contain;" />
           <div>
-            <h1 style="color: #1e3a8a; font-size: 30px; margin: 0; font-weight: 800; line-height: 1.1;">FindRoom</h1>
-            <span style="font-size: 12px; color: #64748b; font-weight: 500;">Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</span>
+            <h1 style="color: #1e3a8a; font-size: 34px; margin: 0 0 4px 0; font-weight: 800; line-height: 1.1;">FindRoom</h1>
+            <div style="font-size: 14px; color: #1e293b; font-weight: 700;">Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 8px; background: #f8fafc; padding: 8px 14px; border-radius: 20px; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600;">
-          <span>📍 Địa chỉ:</span> <span>Phan Đình Phùng - Thái Nguyên</span>
-        </div>
+        <!-- Cụm thông tin phụ bên phải -->
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px; background: #f8fafc; padding: 8px 14px; border-radius: 20px; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600;">
+            <span>📍 Địa chỉ:</span> <span>Phan Đình Phùng - Thái Nguyên</span>
+          </div>
 
-        <div style="background: #eff6ff; color: #1d4ed8; padding: 8px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; border: 1px solid #bfdbfe;">
-          ✨ Nhóm 5
+          <div style="background: #eff6ff; color: #1d4ed8; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #bfdbfe;">
+            ✨ Nhóm 5
+          </div>
         </div>
 
       </header>
@@ -234,6 +238,14 @@ function renderApp(roomsToDisplay) {
       @media (max-width: 768px) {
         .room-card-item {
           grid-template-columns: 1fr !important;
+        }
+        header {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+        }
+        header > div:last-child {
+          align-items: flex-start !important;
+          width: 100%;
         }
       }
     </style>
