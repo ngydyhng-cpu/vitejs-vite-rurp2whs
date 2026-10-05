@@ -10,7 +10,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 let allRooms = [];
 let currentPriceFilter = 'all';
 let currentPeopleFilter = 'all';
-let activeImageIndices = {}; // Lưu ảnh đang được chọn của từng phòng
+let activeImageIndices = {}; // Lưu chỉ mục ảnh đang chọn của từng phòng
 
 window.changeRoomImage = function(roomId, index) {
   activeImageIndices[roomId] = index;
@@ -133,7 +133,7 @@ function renderApp(roomsToDisplay) {
             : roomsToDisplay
                 .map((room) => {
                   let imagesHtml =
-                    '<div style="width: 100%; height: 220px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #94a3b8; font-size: 14px;">Chưa có ảnh</div>';
+                    '<div style="width: 100%; height: 240px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #94a3b8; font-size: 14px;">Chưa có ảnh</div>';
 
                   if (room.hinh_anh) {
                     const imgUrls = room.hinh_anh
@@ -147,15 +147,22 @@ function renderApp(roomsToDisplay) {
 
                       imagesHtml = `
                         <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
-                          <img src="${imgUrls[activeIdx]}" alt="Ảnh phòng trọ" style="width: 100%; height: 230px; object-fit: cover; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);" />
+                          <!-- Ảnh lớn chính -->
+                          <div style="width: 100%; height: 260px; background: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <img src="${imgUrls[activeIdx]}" alt="Ảnh phòng trọ chính" style="width: 100%; height: 100%; object-fit: cover;" />
+                          </div>
+                          
+                          <!-- Danh sách các ô ảnh phụ nhỏ (chuẩn Shopee) -->
                           ${
                             imgUrls.length > 1
                               ? `
-                            <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; width: 100%;">
+                            <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; width: 100%;">
                               ${imgUrls
                                 .map(
                                   (url, idx) => `
-                                <img src="${url}" alt="Ảnh phụ" onclick="window.changeRoomImage('${room.id}',${idx})" style="width: 65px; height: 50px; object-fit: cover; border-radius: 6px; border: ${idx === activeIdx ? '2px solid #2563eb' : '1px solid #cbd5e1'}; flex-shrink: 0; cursor: pointer; opacity: ${idx === activeIdx ? '1' : '0.7'};" />
+                                <div onclick="window.changeRoomImage('${room.id}',${idx})" style="width: 60px; height: 60px; border-radius: 6px; border: ${idx === activeIdx ? '2px solid #2563eb' : '1px solid #cbd5e1'}; overflow: hidden; flex-shrink: 0; cursor: pointer; background: #fff; opacity: ${idx === activeIdx ? '1' : '0.7'}; transition: all 0.2s;">
+                                  <img src="${url}" alt="Ảnh phụ ${idx + 1}" style="width: 100%; height: 100%; object-fit: cover;" />
+                                </div>
                               `
                                 )
                                 .join('')}
@@ -169,7 +176,7 @@ function renderApp(roomsToDisplay) {
                   }
 
                   return `
-                    <div class="room-card-item" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 24px; margin-bottom: 24px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start; box-sizing: border-box; overflow: hidden;">
+                    <div class="room-card-item" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 24px; margin-bottom: 24px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: start; box-sizing: border-box; overflow: hidden;">
                       <div style="width: 100%;">${imagesHtml}</div>
                       <div style="width: 100%; overflow: hidden;">
                         <h3 style="color: #1e3a8a; font-size: 20px; margin: 0 0 12px 0; font-weight: 600; word-break: break-word;">${
@@ -222,7 +229,7 @@ function renderApp(roomsToDisplay) {
       </main>
     </div>
 
-    <!-- Đoạn CSS bổ trợ thu nhỏ màn hình tự chuyển sang dạng cột dọc -->
+    <!-- Responsive tự động chuyển thành dạng dọc trên điện thoại -->
     <style>
       @media (max-width: 768px) {
         .room-card-item {
