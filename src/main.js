@@ -72,12 +72,12 @@ function renderApp(roomsToDisplay) {
           <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 65px; height: 65px; object-fit: contain; border-radius: 50%; background: #fff; padding: 2px; border: 2px solid #2563eb;" />
           <div>
             <h1 style="color: #1e3a8a; font-size: 30px; margin: 0; font-weight: 800; line-height: 1.1;">FindRoom</h1>
-            <span style="font-size: 12px; color: #64748b; font-weight: 500;">Đại học Khoa học - Thái Nguyên</span>
+            <span style="font-size: 12px; color: #64748b; font-weight: 500;">Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</span>
           </div>
         </div>
 
         <div style="display: flex; align-items: center; gap: 8px; background: #f8fafc; padding: 8px 14px; border-radius: 20px; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600;">
-          <span>📍Địa chỉ</span> <span> Phan Đình Phùng - Thái Nguyên</span>
+          <span>📍 Địa chỉ:</span> <span>Phan Đình Phùng - Thái Nguyên</span>
         </div>
 
         <div style="background: #eff6ff; color: #1d4ed8; padding: 8px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; border: 1px solid #bfdbfe;">
@@ -152,7 +152,7 @@ function renderApp(roomsToDisplay) {
                             <img src="${imgUrls[activeIdx]}" alt="Ảnh phòng trọ chính" style="width: 100%; height: 100%; object-fit: cover;" />
                           </div>
                           
-                          <!-- Danh sách các ô ảnh phụ nhỏ (chuẩn Shopee) -->
+                          <!-- Danh sách các ô ảnh phụ nhỏ -->
                           ${
                             imgUrls.length > 1
                               ? `
@@ -185,7 +185,7 @@ function renderApp(roomsToDisplay) {
                         <div style="font-size: 18px; color: #16a34a; font-weight: 700; margin-bottom: 14px;">
                           ${
                             room.gia_phong
-                              ? room.gia_phong.toLocaleString() + ' đ / tháng'
+                              ? Number(room.gia_phong).toLocaleString() + ' đ / tháng'
                               : 'Liên hệ'
                           }
                         </div>
@@ -201,17 +201,17 @@ function renderApp(roomsToDisplay) {
                           }</div>
                           <div>⚡ <strong>Điện:</strong> ${
                             room.gia_dien
-                              ? room.gia_dien.toLocaleString() + ' đ/số'
+                              ? Number(room.gia_dien).toLocaleString() + ' đ/số'
                               : 'Chưa có'
                           }</div>
                           <div>💧 <strong>Nước:</strong> ${
                             room.gia_nuoc
-                              ? room.gia_nuoc.toLocaleString() + ' đ'
+                              ? Number(room.gia_nuoc).toLocaleString() + ' đ'
                               : 'Chưa có'
                           }</div>
                           <div>🛠️ <strong>Dịch vụ:</strong> ${
                             room.dich_vu
-                              ? room.dich_vu.toLocaleString() + ' đ'
+                              ? (isNaN(room.dich_vu) ? room.dich_vu : Number(room.dich_vu).toLocaleString() + ' đ')
                               : 'Chưa có'
                           }</div>
                         </div>
