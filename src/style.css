@@ -13,36 +13,38 @@ body {
   background-color: #f8f9fa;
 }
 
-/* Buộc tất cả các thẻ không được vượt quá 100% màn hình */
-div, section, header, footer, img, table, p, span, h1, h2, h3, h4 {
-  max-width: 100% !important;
-  word-break: break-word; /* Tự động xuống dòng khi gặp chữ dài */
-  overflow-wrap: break-word;
+/* Đảm bảo khung chứa tổng thể không vượt quá màn hình */
+div, section, header, footer, table {
+  max-width: 100%;
 }
 
-/* Thẻ card phòng trọ hiển thị theo dạng cột, ngăn tràn */
+/* Thẻ card phòng trọ: Giữ nguyên cấu trúc linh hoạt ban đầu của bạn */
 .room-card, .card, .item {
   width: 100% !important;
-  max-width: 100% !important;
-  display: flex;
-  flex-direction: column;
   background: #fff;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 12px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-  overflow: hidden; /* Cắt gọn nội dung nếu bị thừa */
+  overflow: hidden; /* Cắt gọn phần tử thừa không cho tràn ra ngoài */
 }
 
-/* Ảnh phòng tự động co giãn vừa khít */
+/* Riêng các đoạn văn bản, địa chỉ, tiêu đề dài sẽ tự động xuống dòng, không làm vỡ khung */
+p, span, h1, h2, h3, h4, a, li {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Ảnh phòng tự động co giãn vừa khít khung chứa của nó */
 img {
-  width: 100% !important;
+  max-width: 100% !important;
   height: auto;
   object-fit: cover;
   border-radius: 6px;
 }
 
-/* Các ô tìm kiếm, bộ lọc căn dọc gọn gàng */
+/* Các ô tìm kiếm, bộ lọc căn chỉnh gọn gàng */
 input, select, button {
   width: 100% !important;
   max-width: 100% !important;
