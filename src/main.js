@@ -63,32 +63,34 @@ function renderApp(roomsToDisplay) {
   const appContainer = document.querySelector('#app');
 
   appContainer.innerHTML = `
-    <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); min-height: 100vh; padding: 20px 15px; color: #334155;">
+    <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); min-height: 100vh; padding: 25px 15px; color: #334155;">
       
       <!-- Header -->
-      <header style="max-width: 900px; margin: 0 auto 20px auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; background: #ffffff; padding: 22px 30px; border-radius: 16px; box-shadow: 0 4px 16px rgba(30, 58, 138, 0.08); border-left: 6px solid #2563eb;">
+      <header style="max-width: 900px; margin: 0 auto 20px auto; background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(30, 58, 138, 0.08); border-left: 6px solid #2563eb;">
         
-        <!-- Cụm Logo và Tiêu đề chính bên trái -->
-        <div style="display: flex; align-items: center; gap: 18px;">
-          <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 75px; height: 75px; object-fit: contain;" />
-          <div>
-            <h1 style="color: #1e3a8a; font-size: 34px; margin: 0 0 4px 0; font-weight: 800; line-height: 1.1;">FindRoom</h1>
-            <div style="font-size: 14px; color: #1e293b; font-weight: 700;">Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
+        <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+          <!-- Logo to bên trái -->
+          <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 95px; height: 95px; object-fit: contain; flex-shrink: 0;" />
+          
+          <!-- Tiêu đề FindRoom to và rộng rãi -->
+          <div style="flex-grow: 1;">
+            <h1 style="color: #1e3a8a; font-size: 42px; margin: 0 0 6px 0; font-weight: 800; letter-spacing: 0.5px; line-height: 1.1;">FindRoom</h1>
+            <div style="font-size: 15px; color: #475569; font-weight: 600; line-height: 1.4;">Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
           </div>
         </div>
 
-        <!-- Cụm thông tin phụ bên phải (Địa chỉ, SĐT, Nhóm 5) -->
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
-          <div style="display: flex; align-items: center; gap: 8px; background: #f8fafc; padding: 8px 14px; border-radius: 20px; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600;">
-            <span>📍 Địa chỉ:</span> <span>Phan Đình Phùng - Thái Nguyên</span>
+        <!-- 3 mục Địa chỉ, SĐT, Nhóm thành hàng ngang ở dưới -->
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; padding-top: 18px; border-top: 1px solid #e2e8f0;">
+          <div style="display: flex; align-items: center; gap: 6px; background: #f8fafc; padding: 8px 14px; border-radius: 8px; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600;">
+            <span>📍 Địa chỉ:</span> <span style="font-weight: 500;">Phan Đình Phùng - Thái Nguyên</span>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 8px; background: #f8fafc; padding: 8px 14px; border-radius: 20px; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600;">
-            <span>📞 SĐT:</span> <span>0123456789</span>
+          <div style="display: flex; align-items: center; gap: 6px; background: #f8fafc; padding: 8px 14px; border-radius: 8px; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600;">
+            <span>📞 SĐT:</span> <span style="font-weight: 500;">0123456789</span>
           </div>
 
-          <div style="background: #eff6ff; color: #1d4ed8; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #bfdbfe;">
-            ✨ Nhóm 5
+          <div style="display: flex; align-items: center; gap: 6px; background: #eff6ff; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid #bfdbfe; color: #1d4ed8;">
+            <span>✨</span> <span>Nhóm 5</span>
           </div>
         </div>
 
@@ -96,7 +98,7 @@ function renderApp(roomsToDisplay) {
 
       <!-- Slogan -->
       <div style="max-width: 900px; margin: 0 auto 25px auto;">
-        <p style="color: #1e293b; font-size: 20px; line-height: 1.6; font-style: italic; font-weight: 600; text-align: center; background: #ffffff; padding: 18px 22px; border-radius: 12px; border: 1px solid #e2e8f0;">
+        <p style="color: #1e293b; font-size: 18px; line-height: 1.6; font-style: italic; font-weight: 500; text-align: center; background: #ffffff; padding: 20px 24px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
           "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn, đặc biệt là sinh viên năm nhất trường Đại học Khoa học - Thái Nguyên, dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
         </p>
       </div>
@@ -242,14 +244,6 @@ function renderApp(roomsToDisplay) {
       @media (max-width: 768px) {
         .room-card-item {
           grid-template-columns: 1fr !important;
-        }
-        header {
-          flex-direction: column !important;
-          align-items: flex-start !important;
-        }
-        header > div:last-child {
-          align-items: flex-start !important;
-          width: 100%;
         }
       }
     </style>
