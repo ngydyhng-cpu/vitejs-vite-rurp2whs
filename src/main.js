@@ -184,6 +184,17 @@ function renderApp(roomsToDisplay) {
                   let formattedDescription = room.mo_ta || 'Không có mô tả chi tiết.';
                   formattedDescription = formattedDescription.replace(/\s*-\s*/g, '<br>- ');
 
+                  // Xử lý giá điện, nước, dịch vụ (nếu là số thì format, nếu là chữ/ký tự riêng thì giữ nguyên)
+                  const formatUtility = (val, suffix = ' đ') => {
+                    if (!val && val !== 0) return 'Chưa có';
+                    const strVal = String(val).trim();
+                    const num = Number(strVal);
+                    if (!isNaN(num)) {
+                      return num.toLocaleString() + suffix;
+                    }
+                    return strVal; // Nếu chứa chữ hoặc ký tự như '17000/1' thì in thẳng ra
+                  };
+
                   return `
                     <div class="room-card-item" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 26px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: stretch; box-sizing: border-box; overflow: hidden;">
                       <div style="width: 100%;">${imagesHtml}</div>
@@ -210,21 +221,9 @@ function renderApp(roomsToDisplay) {
                             <div>👥 <strong>Số người:</strong> ${
                               room.so_nguoi || 'Chưa có'
                             }</div>
-                            <div>⚡ <strong>Điện:</strong> ${
-                              room.gia_dien
-                                ? Number(room.gia_dien).toLocaleString() + ' đ/số'
-                                : 'Chưa có'
-                            }</div>
-                            <div>💧 <strong>Nước:</strong> ${
-                              room.gia_nuoc
-                                ? Number(room.gia_nuoc).toLocaleString() + ' đ'
-                                : 'Chưa có'
-                            }</div>
-                            <div>🛠️ <strong>Dịch vụ:</strong> ${
-                              room.dich_vu
-                                ? (isNaN(room.dich_vu) ? room.dich_vu : Number(room.dich_vu).toLocaleString() + ' đ')
-                                : 'Chưa có'
-                            }</div>
+                            <div>⚡ <strong>Điện:</strong> ${formatUtility(room.gia_dien, ' đ/số')}</div>
+                            <div>💧 <strong>Nước:</strong> ${formatUtility(room.gia_nuoc, ' đ')}</div>
+                            <div>🛠️ <strong>Dịch vụ:</strong> ${formatUtility(room.dich_vu, ' đ')}</div>
                           </div>
                         </div>
                         
