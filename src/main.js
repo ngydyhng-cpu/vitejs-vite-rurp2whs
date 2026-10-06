@@ -180,6 +180,10 @@ function renderApp(roomsToDisplay) {
                     }
                   }
 
+                  // Xử lý mô tả để tự động xuống dòng khi gặp dấu gạch ngang '-'
+                  let formattedDescription = room.mo_ta || 'Không có mô tả chi tiết.';
+                  formattedDescription = formattedDescription.replace(/ - /g, '<br>- ');
+
                   return `
                     <div class="room-card-item" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 26px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: stretch; box-sizing: border-box; overflow: hidden;">
                       <div style="width: 100%;">${imagesHtml}</div>
@@ -225,9 +229,7 @@ function renderApp(roomsToDisplay) {
                         </div>
                         
                         <div style="background: #f8fafc; padding: 14px 16px; border-radius: 8px; font-size: 15px; color: #1e293b; line-height: 1.6; border: 1px solid #e2e8f0; word-break: break-word; margin-top: 8px;">
-                          <strong style="color: #1e3a8a; font-size: 15px;">Mô tả:</strong> ${
-                            room.mo_ta || 'Không có mô tả chi tiết.'
-                          }
+                          <strong style="color: #1e3a8a; font-size: 15px;">Mô tả:</strong> ${formattedDescription}
                         </div>
                       </div>
                     </div>
