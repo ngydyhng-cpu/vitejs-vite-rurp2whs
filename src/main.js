@@ -180,9 +180,9 @@ function renderApp(roomsToDisplay) {
                     }
                   }
 
-                  // Xử lý mô tả để tự động xuống dòng khi gặp dấu gạch ngang '-'
+                  // Xử lý mô tả: tự động bắt mọi kiểu dấu gạch ngang '-' để xuống dòng
                   let formattedDescription = room.mo_ta || 'Không có mô tả chi tiết.';
-                  formattedDescription = formattedDescription.replace(/ - /g, '<br>- ');
+                  formattedDescription = formattedDescription.replace(/\s*-\s*/g, '<br>- ');
 
                   return `
                     <div class="room-card-item" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 26px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: stretch; box-sizing: border-box; overflow: hidden;">
