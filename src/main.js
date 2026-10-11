@@ -63,8 +63,8 @@ function renderApp(roomsToDisplay) {
   const appContainer = document.querySelector('#app');
 
   appContainer.innerHTML = `
-    <!-- Đổi nền tổng thể (2 bên lề) thành màu trắng ngà/kem ấm áp: #fdfbf7 -->
-    <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #fdfbf7; min-height: 100vh; padding: 35px 15px; color: #1e293b;">
+    <!-- Đổi nền tổng thể (2 bên lề) thành màu kem ấm rõ nét hơn: #fef7ed -->
+    <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #fef7ed; min-height: 100vh; padding: 35px 15px; color: #1e293b;">
       
       <!-- Header với ảnh nền độ đậm 65% -->
       <header style="max-width: 900px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.45)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 36px; border-radius: 24px; box-shadow: 0 12px 35px -8px rgba(37, 99, 235, 0.15); border: 2px solid #e2e8f0; position: relative; overflow: hidden;">
