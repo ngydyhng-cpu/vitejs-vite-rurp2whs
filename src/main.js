@@ -219,7 +219,8 @@ function renderApp(roomsToDisplay) {
                             <span style="background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;">Phòng trống</span>
                           </div>
 
-                          <div style="font-size: 22px; color: #dc2626; font-weight: 900; margin-bottom: 16px; letter-spacing: -0.5px;">
+                          <!-- Đã chỉnh giá tiền chính xác sang màu xanh lá -->
+                          <div style="font-size: 22px; color: #16a34a; font-weight: 900; margin-bottom: 16px; letter-spacing: -0.5px;">
                             ${
                               room.gia_phong
                                 ? Number(room.gia_phong).toLocaleString() + ' đ / tháng'
