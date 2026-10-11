@@ -77,8 +77,8 @@ function renderApp(roomsToDisplay) {
           </div>
           
           <div style="flex-grow: 1;">
-            <!-- Đổi sang chữ Xanh ngọc rực rỡ dạng gradient -->
-            <h1 style="background: linear-gradient(90deg, #0284c7, #0d9488); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 44px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));">FindRoom</h1>
+            <!-- Đổi sang màu vàng Gold rực rỡ để nổi bật tuyệt đối trên nền lá cây -->
+            <h1 style="color: #d97706; font-size: 44px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; text-shadow: 0 2px 4px rgba(255,255,255,0.9), 0 4px 10px rgba(0,0,0,0.3);">FindRoom</h1>
             <div style="font-size: 15px; color: #0369a1; font-weight: 700; line-height: 1.4; background: rgba(224, 242, 254, 0.95); display: inline-block; padding: 4px 12px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
           </div>
         </div>
