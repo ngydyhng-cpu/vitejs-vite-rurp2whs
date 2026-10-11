@@ -63,7 +63,6 @@ function renderApp(roomsToDisplay) {
   const appContainer = document.querySelector('#app');
 
   appContainer.innerHTML = `
-    <!-- Đổi nền tổng thể (2 bên lề) thành màu kem ấm rõ nét hơn: #fef7ed -->
     <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #fef7ed; min-height: 100vh; padding: 35px 15px; color: #1e293b;">
       
       <!-- Header với ảnh nền độ đậm 65% -->
@@ -99,11 +98,11 @@ function renderApp(roomsToDisplay) {
         </div>
       </header>
 
-      <!-- Slogan -->
+      <!-- Slogan (Chữ màu đen đậm và to hơn) -->
       <div style="max-width: 900px; margin: 0 auto 25px auto;">
-        <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 24px 30px; border-radius: 20px; border: 2px solid #fbcfe8; box-shadow: 0 8px 20px rgba(219,39,119,0.06); position: relative;">
+        <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 26px 32px; border-radius: 20px; border: 2px solid #fbcfe8; box-shadow: 0 8px 20px rgba(219,39,119,0.06); position: relative;">
           <div style="position: absolute; top: -14px; left: 24px; background: #db2777; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 12px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px;">Sứ mệnh của chúng tôi</div>
-          <p style="color: #475569; font-size: 16px; line-height: 1.7; font-style: italic; font-weight: 600; text-align: center; margin: 4px 0 0 0;">
+          <p style="color: #0f172a; font-size: 18px; line-height: 1.75; font-style: italic; font-weight: 700; text-align: center; margin: 4px 0 0 0;">
             "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn, đặc biệt là sinh viên năm nhất trường Đại học Khoa học - Thái Nguyên, dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
           </p>
         </div>
