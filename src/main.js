@@ -65,8 +65,8 @@ function renderApp(roomsToDisplay) {
   appContainer.innerHTML = `
     <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f8fafc; min-height: 100vh; padding: 35px 15px; color: #1e293b;">
       
-      <!-- Header với ảnh nền độ đậm 65% -->
-      <header style="max-width: 900px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.45)), url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 36px; border-radius: 24px; box-shadow: 0 12px 35px -8px rgba(37, 99, 235, 0.15); border: 2px solid #e2e8f0; position: relative; overflow: hidden;">
+      <!-- Header với ảnh nền nội thất sáng sủa, sang trọng, không bị vướng lá cây -->
+      <header style="max-width: 900px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 36px; border-radius: 24px; box-shadow: 0 12px 35px -8px rgba(37, 99, 235, 0.15); border: 2px solid #e2e8f0; position: relative; overflow: hidden;">
         
         <!-- Dải màu trang trí phía trên header -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #2563eb, #db2777, #9333ea);"></div>
@@ -77,13 +77,13 @@ function renderApp(roomsToDisplay) {
           </div>
           
           <div style="flex-grow: 1;">
-            <!-- Chữ FindRoom màu Cam Lửa rực rỡ, cực kỳ nổi bật giữa nền lá cây và không bị chìm -->
-            <h1 style="color: #ea580c; font-size: 44px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; text-shadow: 0 2px 4px rgba(255,255,255,0.9), 0 4px 10px rgba(0,0,0,0.3);">FindRoom</h1>
+            <!-- Chữ FindRoom màu xanh ngọc đậm / xanh dương cực kỳ nổi bật trên nền sáng -->
+            <h1 style="color: #0284c7; font-size: 44px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; text-shadow: 0 2px 4px rgba(255,255,255,0.9);">FindRoom</h1>
             <div style="font-size: 15px; color: #0369a1; font-weight: 700; line-height: 1.4; background: rgba(224, 242, 254, 0.95); display: inline-block; padding: 4px 12px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
           </div>
         </div>
 
-        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 26px; padding-top: 20px; border-top: 2px dashed rgba(100,116,139,0.4);">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 26px; padding-top: 20px; border-top: 2px dashed rgba(100,116,139,0.3);">
           <div style="display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.95); padding: 9px 16px; border-radius: 12px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
             <span>📍 Địa chỉ:</span> <span style="font-weight: 500; color: #475569;">Phan Đình Phùng - Thái Nguyên</span>
           </div>
