@@ -63,80 +63,80 @@ function renderApp(roomsToDisplay) {
   const appContainer = document.querySelector('#app');
 
   appContainer.innerHTML = `
-    <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f8fafc; min-height: 100vh; color: #1e293b; padding-bottom: 40px;">
+    <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f8fafc; min-height: 100vh; padding: 35px 15px; color: #1e293b;">
       
-      <!-- Hero Banner có ảnh nền phòng trọ hiện đại -->
-      <div style="position: relative; background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 50px 20px 60px 20px; color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-        <div style="max-width: 900px; margin: 0 auto;">
+      <!-- Header với ảnh nền bên trong ô chứa chữ FindRoom -->
+      <header style="max-width: 900px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.94)), url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 36px; border-radius: 24px; box-shadow: 0 12px 35px -8px rgba(37, 99, 235, 0.12); border: 2px solid #e2e8f0; position: relative; overflow: hidden;">
+        
+        <!-- Dải màu trang trí phía trên header -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #2563eb, #db2777, #9333ea);"></div>
+        
+        <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+          <div style="background: #ffffff; padding: 10px; border-radius: 18px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
+            <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 85px; height: 85px; object-fit: contain; flex-shrink: 0;" />
+          </div>
           
-          <!-- Header thu gọn bên trong banner -->
-          <header style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 28px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 25px;">
-            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-              <div style="background: #ffffff; padding: 8px; border-radius: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
-                <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 75px; height: 75px; object-fit: contain; flex-shrink: 0;" />
-              </div>
-              
-              <div style="flex-grow: 1;">
-                <h1 style="background: linear-gradient(90deg, #1e3a8a, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 38px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1;">FindRoom</h1>
-                <div style="font-size: 14px; color: #0369a1; font-weight: 700; background: #e0f2fe; display: inline-block; padding: 3px 10px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
-              </div>
-            </div>
+          <div style="flex-grow: 1;">
+            <h1 style="background: linear-gradient(90deg, #1e3a8a, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 44px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1;">FindRoom</h1>
+            <div style="font-size: 15px; color: #0369a1; font-weight: 700; line-height: 1.4; background: #e0f2fe; display: inline-block; padding: 4px 12px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
+          </div>
+        </div>
 
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; padding-top: 16px; border-top: 2px dashed #e2e8f0;">
-              <div style="display: flex; align-items: center; gap: 6px; background: #f8fafc; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700;">
-                <span>📍 Địa chỉ:</span> <span style="font-weight: 500; color: #475569;">Phan Đình Phùng - Thái Nguyên</span>
-              </div>
-
-              <div style="display: flex; align-items: center; gap: 6px; background: #f8fafc; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700;">
-                <span>📞 SĐT:</span> <span style="font-weight: 500; color: #475569;">0123456789</span>
-              </div>
-
-              <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; color: #ffffff;">
-                <span>🔥</span> <span>Nhóm 5</span>
-              </div>
-            </div>
-          </header>
-
-          <!-- Slogan dạng trong suốt nằm trên nền ảnh -->
-          <div style="margin-bottom: 25px; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.15);">
-            <p style="color: #f1f5f9; font-size: 15px; line-height: 1.6; font-style: italic; font-weight: 500; text-align: center; margin: 0;">
-              "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn, đặc biệt là sinh viên năm nhất trường Đại học Khoa học - Thái Nguyên, dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
-            </p>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 26px; padding-top: 20px; border-top: 2px dashed #cbd5e1;">
+          <div style="display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.9); padding: 9px 16px; border-radius: 12px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+            <span>📍 Địa chỉ:</span> <span style="font-weight: 500; color: #475569;">Phan Đình Phùng - Thái Nguyên</span>
           </div>
 
-          <!-- Bộ lọc nằm đè lên trên nền ảnh banner -->
-          <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 22px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.25); display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; border: 1px solid rgba(255,255,255,0.5);">
-            
-            <div>
-              <label style="display: block; font-size: 13px; font-weight: 800; color: #1e3a8a; margin-bottom: 6px;">💰 Khoảng giá phòng</label>
-              <select id="filter-price" style="width: 100%; padding: 11px 14px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 14px; font-weight: 600; background: #f8fafc; outline: none; cursor: pointer; color: #334155;">
-                <option value="all">🌟 Tất cả mức giá</option>
-                <option value="0-1000000">Dưới 1 triệu</option>
-                <option value="1000000-2000000">1 triệu - 2 triệu</option>
-                <option value="2000000-3000000">2 triệu - 3 triệu</option>
-                <option value="3000000-4000000">3 triệu - 4 triệu</option>
-                <option value="4000000-5000000">4 triệu - 5 triệu</option>
-                <option value="5000000-999999999">Trên 5 triệu</option>
-              </select>
-            </div>
-
-            <div>
-              <label style="display: block; font-size: 13px; font-weight: 800; color: #1e3a8a; margin-bottom: 6px;">👥 Số lượng người ở</label>
-              <select id="filter-people" style="width: 100%; padding: 11px 14px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 14px; font-weight: 600; background: #f8fafc; outline: none; cursor: pointer; color: #334155;">
-                <option value="all">🌟 Tất cả số người</option>
-                <option value="1">1 người</option>
-                <option value="2">2 người</option>
-                <option value="3">3 người</option>
-              </select>
-            </div>
-
+          <div style="display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.9); padding: 9px 16px; border-radius: 12px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+            <span>📞 SĐT:</span> <span style="font-weight: 500; color: #475569;">0123456789</span>
           </div>
 
+          <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 9px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; color: #ffffff; box-shadow: 0 4px 12px rgba(37,99,235,0.3);">
+            <span>🔥</span> <span>Nhóm 5</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Slogan -->
+      <div style="max-width: 900px; margin: 0 auto 25px auto;">
+        <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 24px 30px; border-radius: 20px; border: 2px solid #fbcfe8; box-shadow: 0 8px 20px rgba(219,39,119,0.06); position: relative;">
+          <div style="position: absolute; top: -14px; left: 24px; background: #db2777; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 12px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px;">Sứ mệnh của chúng tôi</div>
+          <p style="color: #475569; font-size: 16px; line-height: 1.7; font-style: italic; font-weight: 600; text-align: center; margin: 4px 0 0 0;">
+            "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn, đặc biệt là sinh viên năm nhất trường Đại học Khoa học - Thái Nguyên, dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
+          </p>
         </div>
       </div>
 
-      <!-- Main Container (Danh sách phòng trọ bên dưới) -->
-      <main style="max-width: 900px; margin: 30px auto 0 auto; padding: 0 15px;">
+      <!-- Bộ lọc -->
+      <div style="max-width: 900px; margin: 0 auto 25px auto; background: #ffffff; padding: 24px; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; border: 2px solid #e2e8f0; border-top: 6px solid #2563eb;">
+        
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 800; color: #1e3a8a; margin-bottom: 8px;">💰 Khoảng giá phòng</label>
+          <select id="filter-price" style="width: 100%; padding: 12px 16px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 14px; font-weight: 600; background: #f8fafc; outline: none; cursor: pointer; color: #334155;">
+            <option value="all">🌟 Tất cả mức giá</option>
+            <option value="0-1000000">Dưới 1 triệu</option>
+            <option value="1000000-2000000">1 triệu - 2 triệu</option>
+            <option value="2000000-3000000">2 triệu - 3 triệu</option>
+            <option value="3000000-4000000">3 triệu - 4 triệu</option>
+            <option value="4000000-5000000">4 triệu - 5 triệu</option>
+            <option value="5000000-999999999">Trên 5 triệu</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 800; color: #1e3a8a; margin-bottom: 8px;">👥 Số lượng người ở</label>
+          <select id="filter-people" style="width: 100%; padding: 12px 16px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 14px; font-weight: 600; background: #f8fafc; outline: none; cursor: pointer; color: #334155;">
+            <option value="all">🌟 Tất cả số người</option>
+            <option value="1">1 người</option>
+            <option value="2">2 người</option>
+            <option value="3">3 người</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Main Container -->
+      <main style="max-width: 900px; margin: 0 auto;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px;">
           <h2 style="font-size: 20px; color: #1e3a8a; margin: 0; border-left: 6px solid #2563eb; padding-left: 12px; font-weight: 900;">
             Danh sách phòng trọ
