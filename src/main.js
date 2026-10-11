@@ -65,7 +65,7 @@ function renderApp(roomsToDisplay) {
   appContainer.innerHTML = `
     <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f8fafc; min-height: 100vh; padding: 35px 15px; color: #1e293b;">
       
-      <!-- Header với ảnh nền độ đậm 65% và chữ FindRoom hiệu ứng màu Messenger -->
+      <!-- Header với ảnh nền độ đậm 65% -->
       <header style="max-width: 900px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.45)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 36px; border-radius: 24px; box-shadow: 0 12px 35px -8px rgba(37, 99, 235, 0.15); border: 2px solid #e2e8f0; position: relative; overflow: hidden;">
         
         <!-- Dải màu trang trí phía trên header -->
@@ -77,8 +77,8 @@ function renderApp(roomsToDisplay) {
           </div>
           
           <div style="flex-grow: 1;">
-            <!-- Chữ FindRoom chuyển màu Gradient Xanh - Tím - Hồng kiểu Messenger -->
-            <h1 style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 35%, #9333ea 70%, #db2777 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 44px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; filter: drop-shadow(0 2px 4px rgba(255,255,255,0.9)) drop-shadow(0 4px 10px rgba(147,51,234,0.25));">FindRoom</h1>
+            <!-- Chữ FindRoom chuẩn hiệu ứng dải màu Messenger -->
+            <h1 style="background: -webkit-linear-gradient(135deg, #00c6ff, #0072ff, #9333ea, #db2777); background: linear-gradient(135deg, #00c6ff, #0072ff, #9333ea, #db2777); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; font-size: 44px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; filter: drop-shadow(0 2px 4px rgba(255,255,255,0.9));">FindRoom</h1>
             <div style="font-size: 15px; color: #0369a1; font-weight: 700; line-height: 1.4; background: rgba(224, 242, 254, 0.95); display: inline-block; padding: 4px 12px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
           </div>
         </div>
