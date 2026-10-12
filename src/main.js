@@ -12,31 +12,31 @@ let currentPriceFilter = 'all';
 let currentPeopleFilter = 'all';
 let activeImageIndices = {};
 
-// Biến lưu trạng thái Modal đặt phòng
-let selectedRoomForBooking = null;
+// Biến lưu thông tin phòng đang chọn đặt
+let selectedRoomData = { id: null, name: null };
 
 window.changeRoomImage = function(roomId, index) {
   activeImageIndices[roomId] = index;
   renderApp(getFilteredRooms());
 };
 
-// Hàm mở Modal đăng ký
-window.openBookingModal = function(roomName) {
-  selectedRoomForBooking = roomName;
+// Hàm mở Modal đăng ký (nhận cả ID và Tên phòng)
+window.openBookingModal = function(roomId, roomName) {
+  selectedRoomData = { id: roomId, name: roomName };
   const modal = document.getElementById('booking-modal');
   if (modal) modal.style.display = 'flex';
 };
 
 // Hàm đóng Modal
 window.closeBookingModal = function() {
-  selectedRoomForBooking = null;
+  selectedRoomData = { id: null, name: null };
   const modal = document.getElementById('booking-modal');
   if (modal) modal.style.display = 'none';
   const inputSdt = document.getElementById('customer-sdt');
   if (inputSdt) inputSdt.value = '';
 };
 
-// Hàm xử lý gửi thông tin lên Supabase
+// Hàm xử lý gửi thông tin lên Supabase (lưu cả room_id, ten_phong và sdt)
 window.submitBookingRequest = async function() {
   const sdtInput = document.getElementById('customer-sdt');
   const sdt = sdtInput ? sdtInput.value.trim() : '';
@@ -48,7 +48,8 @@ window.submitBookingRequest = async function() {
 
   const { error } = await supabase.from('requests').insert([
     {
-      ten_phong: selectedRoomForBooking,
+      room_id: String(selectedRoomData.id),
+      ten_phong: selectedRoomData.name,
       sdt: sdt
     }
   ]);
@@ -259,6 +260,7 @@ function renderApp(roomsToDisplay) {
 
                   const mapUrl = room.map_link ? room.map_link : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(room.dia_chi || '')}`;
                   const roomNameForBooking = room.ten_phong || 'Phòng trọ';
+                  const roomIdForBooking = room.id; // Lấy mã ID của phòng
 
                   return `
                     <div class="room-card-item" style="background: #ffffff; border: 2px solid #e2e8f0; padding: 28px; margin-bottom: 25px; border-radius: 20px; box-shadow: 0 10px 30px -5px rgba(30,58,138,0.06); display: grid; grid-template-columns: 320px 1fr; gap: 26px; align-items: stretch; box-sizing: border-box; overflow: hidden; transition: all 0.3s ease;">
@@ -301,8 +303,8 @@ function renderApp(roomsToDisplay) {
                             <div style="font-weight: 700; color: #334155;">${formattedDescription}</div>
                           </div>
 
-                          <!-- NÚT ĐĂNG KÝ THUÊ PHÒNG -->
-                          <button onclick="window.openBookingModal('${roomNameForBooking.replace(/'/g, "\\'")}')" style="width: 100%; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); transition: all 0.2s;">
+                          <!-- NÚT ĐĂNG KÝ THUÊ PHÒNG (Truyền cả ID và Tên phòng) -->
+                          <button onclick="window.openBookingModal('${roomIdForBooking}', '${roomNameForBooking.replace(/'/g, "\\'")}')" style="width: 100%; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); transition: all 0.2s;">
                             📞 Đăng ký thuê / Tư vấn phòng này ngay
                           </button>
                         </div>
