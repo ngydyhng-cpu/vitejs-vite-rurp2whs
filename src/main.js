@@ -254,8 +254,10 @@ function renderApp(roomsToDisplay) {
                           </div>
                         </div>
                         
-                        <div style="background: #ffffff; padding: 14px 18px; border-radius: 12px; font-size: 14px; color: #475569; line-height: 1.6; border: 2px dashed #cbd5e1; word-break: break-word;">
-                          <strong style="color: #1e3a8a; display: block; margin-bottom: 4px; font-size: 14px;">📝 Mô tả chi tiết:</strong> ${formattedDescription}
+                        <!-- PHẦN MÔ TẢ ĐÃ ĐƯỢC TĂNG ĐỘ ĐẬM VÀ RÕ RÀNG HƠN -->
+                        <div style="background: #ffffff; padding: 16px 20px; border-radius: 14px; font-size: 14px; color: #0f172a; line-height: 1.7; border: 2px dashed #cbd5e1; word-break: break-word; font-weight: 600; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+                          <strong style="color: #1e3a8a; display: block; margin-bottom: 6px; font-size: 15px; font-weight: 900; letter-spacing: -0.2px;">📝 Mô tả chi tiết:</strong> 
+                          <span style="font-weight: 700; color: #334155;">${formattedDescription}</span>
                         </div>
                       </div>
                     </div>
