@@ -207,6 +207,9 @@ function renderApp(roomsToDisplay) {
                     return strVal;
                   };
 
+                  // Xử lý link Google Maps (nếu có map_link thì dùng, không thì tự search theo địa chỉ)
+                  const mapUrl = room.map_link ? room.map_link : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(room.dia_chi || '')}`;
+
                   return `
                     <div class="room-card-item" style="background: #ffffff; border: 2px solid #e2e8f0; padding: 28px; margin-bottom: 25px; border-radius: 20px; box-shadow: 0 10px 30px -5px rgba(30,58,138,0.06); display: grid; grid-template-columns: 320px 1fr; gap: 26px; align-items: stretch; box-sizing: border-box; overflow: hidden; transition: all 0.3s ease;">
                       <div style="width: 100%;">${imagesHtml}</div>
@@ -229,7 +232,13 @@ function renderApp(roomsToDisplay) {
                           </div>
                           
                           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 14px; margin-bottom: 18px; color: #334155; word-break: break-word; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 16px; border-radius: 14px; border: 1px solid #e2e8f0;">
-                            <div>📍 <strong>Địa chỉ:</strong> <span style="color: #475569; font-weight: 600;">${room.dia_chi || 'Chưa có'}</span></div>
+                            <div>
+                              📍 <strong>Địa chỉ:</strong> 
+                              <a href="${mapUrl}" target="_blank" title="Bấm để xem vị trí trên Google Maps" style="color: #2563eb; text-decoration: underline; font-weight: 600;">
+                                ${room.dia_chi || 'Chưa có'}
+                              </a>
+                              ${room.khoang_cach ? `<span style="color: #e11d48; display: inline-block; margin-top: 4px; font-weight: 700; font-size: 13px;">(Cách trường: ${room.khoang_cach})</span>` : ''}
+                            </div>
                             <div>📏 <strong>Diện tích:</strong> <span style="color: #475569; font-weight: 600;">${room.dien_tich ? room.dien_tich + ' m²' : 'Chưa có'}</span></div>
                             <div>👥 <strong>Số người:</strong> <span style="color: #475569; font-weight: 600;">${room.so_nguoi || 'Chưa có'}</span></div>
                             <div>⚡ <strong>Điện:</strong> <span style="color: #475569; font-weight: 600;">${formatUtility(room.gia_dien, ' đ/số')}</span></div>
