@@ -10,7 +10,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #fef7ed;
 }
 
 /* Đảm bảo tất cả các thẻ chứa, khung, ảnh không bị vượt quá chiều rộng màn hình điện thoại */
@@ -18,16 +18,39 @@ div, section, header, footer, img, table {
   max-width: 100% !important;
 }
 
-/* Tối ưu hóa các khối giao diện / thẻ card phòng trọ */
-.room-card, .card, .item {
+/* --- CHUẨN RESPONSIVE CHO THẺ PHÒNG TRỌ (ROOM CARD) --- */
+.room-card-item {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px -4px rgba(30,58,138,0.06);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: stretch;
   width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Cột ảnh phòng trọ */
+.room-image-col {
+  flex: 1 1 260px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Cột thông tin phòng trọ */
+.room-info-col {
+  flex: 2 1 300px;
+  width: 100%;
+  min-width: 0; /* Quan trọng: Ngăn chặn flex item bị tràn kích thước */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 12px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 /* Ảnh phòng tự động co giãn vừa khít điện thoại */
@@ -37,7 +60,7 @@ img {
   border-radius: 6px;
 }
 
-/* Khung chứa bộ lọc / tìm kiếm (Giúp căn chỉnh các ô lọc nằm cạnh nhau hoặc xuống dòng hợp lý) */
+/* Khung chứa bộ lọc / tìm kiếm */
 .filter-container, form, .search-bar {
   display: flex;
   flex-wrap: wrap;
@@ -47,21 +70,33 @@ img {
 
 /* Các ô tìm kiếm, bộ lọc căn chỉnh gọn gàng, tự động co giãn theo khung chứa */
 input, select, button {
-  flex: 1 1 100%; /* Đảm bảo trên màn hình nhỏ mỗi ô chiếm 1 dòng, hoặc tự chia đều khi đủ chỗ */
+  flex: 1 1 100%; 
   width: 100% !important;
   max-width: 100% !important;
-  min-width: 0; /* Quan trọng: Ngăn chặn flex item bị tràn kích thước do nội dung dài */
+  min-width: 0; 
   padding: 10px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 15px; /* Giữ chữ vừa vặn, tránh quá lớn gây cụt chữ */
-  border-radius: 6px;
-  border: 1px solid #ddd;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
   background-color: #fff;
+  box-sizing: border-box;
 }
 
 /* Riêng thẻ select để hiển thị đầy đủ văn bản và icon mũi tên */
 select {
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+/* KHI XEM TRÊN ĐIỆN THOẠI (Dưới 768px): Ép các phần tử hiển thị cực kỳ gọn gàng */
+@media (max-width: 768px) {
+  body {
+    padding: 6px;
+  }
+  .room-card-item {
+    padding: 12px;
+  }
 }
