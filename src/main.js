@@ -70,7 +70,6 @@ function renderApp(roomsToDisplay) {
       <!-- Header với ảnh nền độ đậm 65% -->
       <header style="max-width: 900px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.45)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 36px; border-radius: 24px; box-shadow: 0 12px 35px -8px rgba(37, 99, 235, 0.15); border: 2px solid #e2e8f0; position: relative; overflow: hidden;">
         
-        <!-- Dải màu trang trí phía trên header -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #00c6ff, #0072ff, #9333ea, #db2777);"></div>
         
         <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
@@ -198,9 +197,13 @@ function renderApp(roomsToDisplay) {
                     }
                   }
 
-                  let formattedDescription = room.mo_ta || 'Không có mô tả chi tiết.';
-                  // Dùng <br style="display: block; margin: 4px 0;"> để chỉnh khoảng cách các dòng vừa khít, không bị xa nhau quá
-                  formattedDescription = formattedDescription.replace(/\s*-\s*/g, '<br style="display: block; margin: 4px 0;">- ');
+                  // Xử lý loại bỏ khoảng trắng/xuống dòng thừa và ép các dòng dán khít nhau vừa đẹp
+                  let rawDesc = room.mo_ta || 'Không có mô tả chi tiết.';
+                  let formattedDescription = rawDesc
+                    .split(/\r?\n/)
+                    .map(line => line.trim())
+                    .filter(line => line)
+                    .join('<br style="display: block; margin: 2px 0;">');
 
                   const formatUtility = (val, suffix = ' đ') => {
                     if (!val && val !== 0) return 'Chưa có';
@@ -251,9 +254,9 @@ function renderApp(roomsToDisplay) {
                           </div>
                         </div>
                         
-                        <!-- PHẦN MÔ TẢ ĐÃ GỌN GÀNG, KHOẢNG CÁCH VỪA VẮN -->
-                        <div style="background: #ffffff; padding: 14px 18px; border-radius: 14px; font-size: 14px; color: #0f172a; line-height: 1.5; border: 2px dashed #cbd5e1; word-break: break-word; font-weight: 600; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-                          <div style="color: #1e3a8a; margin-bottom: 6px; font-size: 15px; font-weight: 900; letter-spacing: -0.2px;">📝 Mô tả chi tiết:</div> 
+                        <!-- PHẦN MÔ TẢ ĐÃ ĐƯỢC ÉP KHÍT VỪA VẮN, RẤT GỌN GÀNG -->
+                        <div style="background: #ffffff; padding: 12px 16px; border-radius: 12px; font-size: 14px; color: #0f172a; line-height: 1.4; border: 2px dashed #cbd5e1; word-break: break-word; font-weight: 600; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+                          <div style="color: #1e3a8a; margin-bottom: 4px; font-size: 14px; font-weight: 900; letter-spacing: -0.2px;">📝 Mô tả chi tiết:</div> 
                           <div style="font-weight: 700; color: #334155;">${formattedDescription}</div>
                         </div>
                       </div>
