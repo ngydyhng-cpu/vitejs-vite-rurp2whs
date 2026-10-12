@@ -12,7 +12,6 @@ let currentPriceFilter = 'all';
 let currentPeopleFilter = 'all';
 let activeImageIndices = {};
 
-// Biến lưu thông tin phòng đang chọn đặt
 let selectedRoomData = { id: null, name: null };
 
 window.changeRoomImage = function(roomId, index) {
@@ -20,14 +19,12 @@ window.changeRoomImage = function(roomId, index) {
   renderApp(getFilteredRooms());
 };
 
-// Hàm mở Modal đăng ký (nhận cả ID và Tên phòng)
 window.openBookingModal = function(roomId, roomName) {
   selectedRoomData = { id: roomId, name: roomName };
   const modal = document.getElementById('booking-modal');
   if (modal) modal.style.display = 'flex';
 };
 
-// Hàm đóng Modal
 window.closeBookingModal = function() {
   selectedRoomData = { id: null, name: null };
   const modal = document.getElementById('booking-modal');
@@ -36,7 +33,6 @@ window.closeBookingModal = function() {
   if (inputSdt) inputSdt.value = '';
 };
 
-// Hàm xử lý gửi thông tin lên Supabase (lưu cả room_id, ten_phong và sdt)
 window.submitBookingRequest = async function() {
   const sdtInput = document.getElementById('customer-sdt');
   const sdt = sdtInput ? sdtInput.value.trim() : '';
@@ -46,13 +42,13 @@ window.submitBookingRequest = async function() {
     return;
   }
 
-  const { error } = await supabase.from('requests').insert([
-    {
-      room_id: String(selectedRoomData.id),
-      ten_phong: selectedRoomData.name,
-      sdt: sdt
-    }
-  ]);
+  const payload = {
+    room_id: String(selectedRoomData.id),
+    ten_phong: selectedRoomData.name,
+    sdt: sdt
+  };
+
+  const { error } = await supabase.from('requests').insert([payload]);
 
   if (error) {
     alert('Có lỗi xảy ra: ' + error.message);
@@ -111,7 +107,6 @@ function renderApp(roomsToDisplay) {
   appContainer.innerHTML = `
     <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #fef7ed; min-height: 100vh; padding: 35px 15px; color: #1e293b; position: relative;">
       
-      <!-- Header với ảnh nền độ đậm 65% -->
       <header style="max-width: 900px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.45)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 36px; border-radius: 24px; box-shadow: 0 12px 35px -8px rgba(37, 99, 235, 0.15); border: 2px solid #e2e8f0; position: relative; overflow: hidden;">
         
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #00c6ff, #0072ff, #9333ea, #db2777);"></div>
@@ -145,7 +140,6 @@ function renderApp(roomsToDisplay) {
         </div>
       </header>
 
-      <!-- Slogan -->
       <div style="max-width: 900px; margin: 0 auto 25px auto;">
         <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 26px 32px; border-radius: 20px; border: 2px solid #fbcfe8; box-shadow: 0 8px 20px rgba(219,39,119,0.06); position: relative;">
           <div style="position: absolute; top: -14px; left: 24px; background: #db2777; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 12px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px;">Sứ mệnh của chúng tôi</div>
@@ -155,7 +149,6 @@ function renderApp(roomsToDisplay) {
         </div>
       </div>
 
-      <!-- Bộ lọc -->
       <div style="max-width: 900px; margin: 0 auto 25px auto; background: #ffffff; padding: 24px; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; border: 2px solid #e2e8f0; border-top: 6px solid #2563eb;">
         
         <div>
@@ -183,7 +176,6 @@ function renderApp(roomsToDisplay) {
 
       </div>
 
-      <!-- Main Container -->
       <main style="max-width: 900px; margin: 0 auto;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px;">
           <h2 style="font-size: 20px; color: #1e3a8a; margin: 0; border-left: 6px solid #2563eb; padding-left: 12px; font-weight: 900;">
@@ -260,7 +252,7 @@ function renderApp(roomsToDisplay) {
 
                   const mapUrl = room.map_link ? room.map_link : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(room.dia_chi || '')}`;
                   const roomNameForBooking = room.ten_phong || 'Phòng trọ';
-                  const roomIdForBooking = room.id; // Lấy mã ID của phòng
+                  const roomIdForBooking = room.id;
 
                   return `
                     <div class="room-card-item" style="background: #ffffff; border: 2px solid #e2e8f0; padding: 28px; margin-bottom: 25px; border-radius: 20px; box-shadow: 0 10px 30px -5px rgba(30,58,138,0.06); display: grid; grid-template-columns: 320px 1fr; gap: 26px; align-items: stretch; box-sizing: border-box; overflow: hidden; transition: all 0.3s ease;">
@@ -303,7 +295,6 @@ function renderApp(roomsToDisplay) {
                             <div style="font-weight: 700; color: #334155;">${formattedDescription}</div>
                           </div>
 
-                          <!-- NÚT ĐĂNG KÝ THUÊ PHÒNG (Truyền cả ID và Tên phòng) -->
                           <button onclick="window.openBookingModal('${roomIdForBooking}', '${roomNameForBooking.replace(/'/g, "\\'")}')" style="width: 100%; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); transition: all 0.2s;">
                             📞 Đăng ký thuê / Tư vấn phòng này ngay
                           </button>
@@ -316,9 +307,8 @@ function renderApp(roomsToDisplay) {
         }
       </main>
 
-      <!-- POPUP MODAL ĐĂNG KÝ SỐ ĐIỆN THOẠI -->
       <div id="booking-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 15px;">
-        <div style="background: #ffffff; max-width: 420px; width: 100%; padding: 30px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 2px solid #e2e8f0; position: relative; animation: fadeIn 0.3s ease;">
+        <div style="background: #ffffff; max-width: 420px; width: 100%; padding: 30px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 2px solid #e2e8f0; position: relative;">
           
           <h3 style="color: #1e3a8a; font-size: 22px; margin-top: 0; margin-bottom: 10px; font-weight: 900;">🏠 Đăng ký tư vấn phòng trọ</h3>
           <p style="color: #64748b; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
@@ -343,19 +333,6 @@ function renderApp(roomsToDisplay) {
       </div>
 
     </div>
-
-    <style>
-      .room-card-item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px -10px rgba(37,99,235,0.15);
-        border-color: #3b82f6;
-      }
-      @media (max-width: 768px) {
-        .room-card-item {
-          grid-template-columns: 1fr !important;
-        }
-      }
-    </style>
   `;
 
   document.getElementById('filter-price').value = currentPriceFilter;
