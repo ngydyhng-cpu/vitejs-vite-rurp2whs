@@ -131,7 +131,7 @@ function renderApp(roomsToDisplay) {
           </div>
 
           <div style="display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.95); padding: 9px 16px; border-radius: 12px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <span>📞 SĐT:</span> <span style="font-weight: 500; color: #475569;">0123456789</span>
+            <span>📞 SĐT:</span> <span style="font-weight: 500; color: #475569;">0967711888</span>
           </div>
 
           <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); padding: 9px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; color: #ffffff; box-shadow: 0 4px 12px rgba(37,99,235,0.3);">
