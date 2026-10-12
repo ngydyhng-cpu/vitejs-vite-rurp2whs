@@ -1,102 +1,102 @@
-/* Thiết lập chung để ngăn chặn tràn màn hình trên điện thoại */
+/* Thiết lập chung chống tràn viền */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  padding: 8px;
+  padding: 0;
   width: 100%;
-  max-width: 100vw;
   overflow-x: hidden;
   font-family: Arial, sans-serif;
   background-color: #fef7ed;
+  color: #1e293b;
 }
 
-/* Đảm bảo tất cả các thẻ chứa, khung, ảnh không bị vượt quá chiều rộng màn hình điện thoại */
-div, section, header, footer, img, table {
-  max-width: 100% !important;
-}
-
-/* --- CHUẨN RESPONSIVE CHO THẺ PHÒNG TRỌ (ROOM CARD) --- */
+/* -------------------------------------------------------------
+   BỐ CỤC MÁY TÍNH (PC / MÀN HÌNH LỚN): Chia 2 cột NGANG rõ ràng
+------------------------------------------------------------- */
 .room-card-item {
   background: #ffffff;
   border: 2px solid #e2e8f0;
-  padding: 18px;
-  margin-bottom: 20px;
-  border-radius: 18px;
-  box-shadow: 0 8px 20px -4px rgba(30,58,138,0.06);
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px -5px rgba(30,58,138,0.06);
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
+  gap: 24px;
   align-items: stretch;
-  width: 100% !important;
-  box-sizing: border-box;
+  width: 100%;
 }
 
-/* Cột ảnh phòng trọ */
+/* Cột ảnh bên trái trên máy tính */
 .room-image-col {
-  flex: 1 1 260px;
-  width: 100%;
-  box-sizing: border-box;
+  flex: 0 0 320px;
+  width: 320px;
 }
 
-/* Cột thông tin phòng trọ */
+/* Cột thông tin bên phải trên máy tính */
 .room-info-col {
-  flex: 2 1 300px;
-  width: 100%;
-  min-width: 0; /* Quan trọng: Ngăn chặn flex item bị tràn kích thước */
-  overflow: hidden;
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
 }
 
-/* Ảnh phòng tự động co giãn vừa khít điện thoại */
-img {
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-/* Khung chứa bộ lọc / tìm kiếm */
-.filter-container, form, .search-bar {
+/* Bộ lọc tìm kiếm trên PC */
+.filter-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  width: 100% !important;
+  gap: 15px;
+  width: 100%;
 }
 
-/* Các ô tìm kiếm, bộ lọc căn chỉnh gọn gàng, tự động co giãn theo khung chứa */
+.filter-container > div {
+  flex: 1;
+}
+
+/* Tùy chỉnh input, select, button chung */
 input, select, button {
-  flex: 1 1 100%; 
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0; 
-  padding: 10px 12px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-size: 15px;
-  border-radius: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
   border: 1px solid #cbd5e1;
   background-color: #fff;
   box-sizing: border-box;
 }
 
-/* Riêng thẻ select để hiển thị đầy đủ văn bản và icon mũi tên */
 select {
-  text-overflow: ellipsis;
-  white-space: nowrap;
   cursor: pointer;
 }
 
-/* KHI XEM TRÊN ĐIỆN THOẠI (Dưới 768px): Ép các phần tử hiển thị cực kỳ gọn gàng */
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* -------------------------------------------------------------
+   BỐ CỤC ĐIỆN THOẠI (MOBILE - Dưới 768px): Tự động chuyển dọc
+------------------------------------------------------------- */
 @media (max-width: 768px) {
   body {
     padding: 6px;
   }
+
   .room-card-item {
-    padding: 12px;
+    flex-direction: column; /* Xếp dọc: Ảnh trên, chữ dưới */
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .room-image-col {
+    width: 100%;
+    flex: unset;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    gap: 10px;
   }
 }
