@@ -62,6 +62,9 @@ function getFilteredRooms() {
 function renderApp(roomsToDisplay) {
   const appContainer = document.querySelector('#app');
 
+  // Link bản đồ của trường Đại học Khoa học Thái Nguyên
+  const schoolMapUrl = 'https://maps.app.goo.gl/6dHJdY1rpEsNK5QM7';
+
   appContainer.innerHTML = `
     <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #fef7ed; min-height: 100vh; padding: 35px 15px; color: #1e293b;">
       
@@ -84,8 +87,12 @@ function renderApp(roomsToDisplay) {
         </div>
 
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 26px; padding-top: 20px; border-top: 2px dashed rgba(100,116,139,0.4);">
+          <!-- Địa chỉ trường cập nhật link Google Maps -->
           <div style="display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.95); padding: 9px 16px; border-radius: 12px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <span>📍 Địa chỉ:</span> <span style="font-weight: 500; color: #475569;">Phan Đình Phùng - Thái Nguyên</span>
+            <span>📍 Địa chỉ:</span> 
+            <a href="${schoolMapUrl}" target="_blank" title="Xem vị trí Trường Đại học Khoa học Thái Nguyên" style="color: #2563eb; text-decoration: underline; font-weight: 600;">
+              Đại học Khoa học - ĐH Thái Nguyên
+            </a>
           </div>
 
           <div style="display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.95); padding: 9px 16px; border-radius: 12px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
@@ -207,8 +214,8 @@ function renderApp(roomsToDisplay) {
                     return strVal;
                   };
 
-                  // Lấy link bản đồ trường Đại học Khoa học Thái Nguyên bạn vừa cung cấp
-                  const schoolMapUrl = 'https://maps.app.goo.gl/6dHJdY1rpEsNK5QM7';
+                  // Lấy link map riêng của từng phòng từ cột map_link trong Supabase
+                  const mapUrl = room.map_link ? room.map_link : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(room.dia_chi || '')}`;
 
                   return `
                     <div class="room-card-item" style="background: #ffffff; border: 2px solid #e2e8f0; padding: 28px; margin-bottom: 25px; border-radius: 20px; box-shadow: 0 10px 30px -5px rgba(30,58,138,0.06); display: grid; grid-template-columns: 320px 1fr; gap: 26px; align-items: stretch; box-sizing: border-box; overflow: hidden; transition: all 0.3s ease;">
@@ -234,8 +241,8 @@ function renderApp(roomsToDisplay) {
                           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 14px; margin-bottom: 18px; color: #334155; word-break: break-word; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 16px; border-radius: 14px; border: 1px solid #e2e8f0;">
                             <div>
                               📍 <strong>Địa chỉ:</strong> 
-                              <a href="${schoolMapUrl}" target="_blank" title="Xem vị trí Trường Đại học Khoa học Thái Nguyên trên Google Maps" style="color: #2563eb; text-decoration: underline; font-weight: 600;">
-                                Trường Đại học Khoa học Thái Nguyên
+                              <a href="${mapUrl}" target="_blank" title="Bấm để xem vị trí phòng trọ trên Google Maps" style="color: #2563eb; text-decoration: underline; font-weight: 600;">
+                                ${room.dia_chi || 'Chưa có'}
                               </a>
                               ${room.khoang_cach ? `<span style="color: #e11d48; display: inline-block; margin-top: 4px; font-weight: 700; font-size: 13px;">(Cách trường: ${room.khoang_cach})</span>` : ''}
                             </div>
