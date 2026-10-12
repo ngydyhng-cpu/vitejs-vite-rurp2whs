@@ -12,9 +12,53 @@ let currentPriceFilter = 'all';
 let currentPeopleFilter = 'all';
 let activeImageIndices = {};
 
+// Biến lưu trạng thái Modal đặt phòng
+let selectedRoomForBooking = null;
+
 window.changeRoomImage = function(roomId, index) {
   activeImageIndices[roomId] = index;
   renderApp(getFilteredRooms());
+};
+
+// Hàm mở Modal đăng ký
+window.openBookingModal = function(roomName) {
+  selectedRoomForBooking = roomName;
+  const modal = document.getElementById('booking-modal');
+  if (modal) modal.style.display = 'flex';
+};
+
+// Hàm đóng Modal
+window.closeBookingModal = function() {
+  selectedRoomForBooking = null;
+  const modal = document.getElementById('booking-modal');
+  if (modal) modal.style.display = 'none';
+  const inputSdt = document.getElementById('customer-sdt');
+  if (inputSdt) inputSdt.value = '';
+};
+
+// Hàm xử lý gửi thông tin lên Supabase
+window.submitBookingRequest = async function() {
+  const sdtInput = document.getElementById('customer-sdt');
+  const sdt = sdtInput ? sdtInput.value.trim() : '';
+
+  if (!sdt || sdt.length < 9) {
+    alert('Vui lòng nhập số điện thoại hợp lệ để chúng tôi liên hệ lại nhé!');
+    return;
+  }
+
+  const { error } = await supabase.from('requests').insert([
+    {
+      ten_phong: selectedRoomForBooking,
+      sdt: sdt
+    }
+  ]);
+
+  if (error) {
+    alert('Có lỗi xảy ra: ' + error.message);
+  } else {
+    alert('🎉 Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại với bạn qua số điện thoại này trong thời gian sớm nhất.');
+    window.closeBookingModal();
+  }
 };
 
 async function loadRooms() {
@@ -61,11 +105,10 @@ function getFilteredRooms() {
 
 function renderApp(roomsToDisplay) {
   const appContainer = document.querySelector('#app');
-
   const schoolMapUrl = 'https://maps.app.goo.gl/6dHJdY1rpEsNK5QM7';
 
   appContainer.innerHTML = `
-    <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #fef7ed; min-height: 100vh; padding: 35px 15px; color: #1e293b;">
+    <div style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #fef7ed; min-height: 100vh; padding: 35px 15px; color: #1e293b; position: relative;">
       
       <!-- Header với ảnh nền độ đậm 65% -->
       <header style="max-width: 900px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.45)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 36px; border-radius: 24px; box-shadow: 0 12px 35px -8px rgba(37, 99, 235, 0.15); border: 2px solid #e2e8f0; position: relative; overflow: hidden;">
@@ -197,7 +240,6 @@ function renderApp(roomsToDisplay) {
                     }
                   }
 
-                  // Xử lý loại bỏ khoảng trắng/xuống dòng thừa và ép các dòng dán khít nhau vừa đẹp
                   let rawDesc = room.mo_ta || 'Không có mô tả chi tiết.';
                   let formattedDescription = rawDesc
                     .split(/\r?\n/)
@@ -216,6 +258,7 @@ function renderApp(roomsToDisplay) {
                   };
 
                   const mapUrl = room.map_link ? room.map_link : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(room.dia_chi || '')}`;
+                  const roomNameForBooking = room.ten_phong || 'Phòng trọ';
 
                   return `
                     <div class="room-card-item" style="background: #ffffff; border: 2px solid #e2e8f0; padding: 28px; margin-bottom: 25px; border-radius: 20px; box-shadow: 0 10px 30px -5px rgba(30,58,138,0.06); display: grid; grid-template-columns: 320px 1fr; gap: 26px; align-items: stretch; box-sizing: border-box; overflow: hidden; transition: all 0.3s ease;">
@@ -224,9 +267,7 @@ function renderApp(roomsToDisplay) {
                       <div style="width: 100%; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
                           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 6px;">
-                            <h3 style="color: #1e3a8a; font-size: 23px; margin: 0; font-weight: 800; word-break: break-word; letter-spacing: -0.3px;">${
-                              room.ten_phong || 'Phòng chưa có tên'
-                            }</h3>
+                            <h3 style="color: #1e3a8a; font-size: 23px; margin: 0; font-weight: 800; word-break: break-word; letter-spacing: -0.3px;">${roomNameForBooking}</h3>
                             <span style="background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;">Phòng trống</span>
                           </div>
 
@@ -254,10 +295,16 @@ function renderApp(roomsToDisplay) {
                           </div>
                         </div>
                         
-                        <!-- PHẦN MÔ TẢ ĐÃ ĐƯỢC ÉP KHÍT VỪA VẮN, RẤT GỌN GÀNG -->
-                        <div style="background: #ffffff; padding: 12px 16px; border-radius: 12px; font-size: 14px; color: #0f172a; line-height: 1.4; border: 2px dashed #cbd5e1; word-break: break-word; font-weight: 600; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-                          <div style="color: #1e3a8a; margin-bottom: 4px; font-size: 14px; font-weight: 900; letter-spacing: -0.2px;">📝 Mô tả chi tiết:</div> 
-                          <div style="font-weight: 700; color: #334155;">${formattedDescription}</div>
+                        <div>
+                          <div style="background: #ffffff; padding: 12px 16px; border-radius: 12px; font-size: 14px; color: #0f172a; line-height: 1.4; border: 2px dashed #cbd5e1; word-break: break-word; font-weight: 600; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); margin-bottom: 12px;">
+                            <div style="color: #1e3a8a; margin-bottom: 4px; font-size: 14px; font-weight: 900; letter-spacing: -0.2px;">📝 Mô tả chi tiết:</div> 
+                            <div style="font-weight: 700; color: #334155;">${formattedDescription}</div>
+                          </div>
+
+                          <!-- NÚT ĐĂNG KÝ THUÊ PHÒNG -->
+                          <button onclick="window.openBookingModal('${roomNameForBooking.replace(/'/g, "\\'")}')" style="width: 100%; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); transition: all 0.2s;">
+                            📞 Đăng ký thuê / Tư vấn phòng này ngay
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -266,6 +313,33 @@ function renderApp(roomsToDisplay) {
                 .join('')
         }
       </main>
+
+      <!-- POPUP MODAL ĐĂNG KÝ SỐ ĐIỆN THOẠI -->
+      <div id="booking-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 15px;">
+        <div style="background: #ffffff; max-width: 420px; width: 100%; padding: 30px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 2px solid #e2e8f0; position: relative; animation: fadeIn 0.3s ease;">
+          
+          <h3 style="color: #1e3a8a; font-size: 22px; margin-top: 0; margin-bottom: 10px; font-weight: 900;">🏠 Đăng ký tư vấn phòng trọ</h3>
+          <p style="color: #64748b; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
+            Vui lòng nhập số điện thoại của bạn. Nhóm quản lý FindRoom sẽ liên hệ lại ngay để hỗ trợ xem phòng và chốt trọ!
+          </p>
+
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 13px; font-weight: 800; color: #334155; margin-bottom: 6px;">📱 Số điện thoại liên hệ của bạn:</label>
+            <input type="tel" id="customer-sdt" placeholder="Ví dụ: 0912345678" style="width: 100%; padding: 12px 16px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 15px; font-weight: 600; outline: none; box-sizing: border-box;" />
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <button onclick="window.closeBookingModal()" style="flex: 1; background: #f1f5f9; color: #475569; border: 2px solid #cbd5e1; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer;">
+              Hủy bỏ
+            </button>
+            <button onclick="window.submitBookingRequest()" style="flex: 1; background: #16a34a; color: #ffffff; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(22,163,74,0.3);">
+              Gửi thông tin
+            </button>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
     <style>
