@@ -62,7 +62,6 @@ function getFilteredRooms() {
 function renderApp(roomsToDisplay) {
   const appContainer = document.querySelector('#app');
 
-  // Link bản đồ của trường Đại học Khoa học Thái Nguyên
   const schoolMapUrl = 'https://maps.app.goo.gl/6dHJdY1rpEsNK5QM7';
 
   appContainer.innerHTML = `
@@ -80,14 +79,12 @@ function renderApp(roomsToDisplay) {
           </div>
           
           <div style="flex-grow: 1;">
-            <!-- Chữ FindRoom dải màu Messenger -->
             <h1 style="background: -webkit-linear-gradient(135deg, #00c6ff, #0072ff, #9333ea, #db2777); background: linear-gradient(135deg, #00c6ff, #0072ff, #9333ea, #db2777); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; font-size: 44px; margin: 0 0 4px 0; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; filter: drop-shadow(0 2px 4px rgba(255,255,255,0.9));">FindRoom</h1>
             <div style="font-size: 15px; color: #0369a1; font-weight: 700; line-height: 1.4; background: rgba(224, 242, 254, 0.95); display: inline-block; padding: 4px 12px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - trường Đại học Khoa học - Đại học Thái Nguyên</div>
           </div>
         </div>
 
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 26px; padding-top: 20px; border-top: 2px dashed rgba(100,116,139,0.4);">
-          <!-- Địa chỉ trường cập nhật link Google Maps -->
           <div style="display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.95); padding: 9px 16px; border-radius: 12px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
             <span>📍 Địa chỉ:</span> 
             <a href="${schoolMapUrl}" target="_blank" title="Xem vị trí Trường Đại học Khoa học Thái Nguyên" style="color: #2563eb; text-decoration: underline; font-weight: 600;">
@@ -105,7 +102,7 @@ function renderApp(roomsToDisplay) {
         </div>
       </header>
 
-      <!-- Slogan (Chữ màu đen đậm và to hơn) -->
+      <!-- Slogan -->
       <div style="max-width: 900px; margin: 0 auto 25px auto;">
         <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 26px 32px; border-radius: 20px; border: 2px solid #fbcfe8; box-shadow: 0 8px 20px rgba(219,39,119,0.06); position: relative;">
           <div style="position: absolute; top: -14px; left: 24px; background: #db2777; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 12px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px;">Sứ mệnh của chúng tôi</div>
@@ -202,7 +199,8 @@ function renderApp(roomsToDisplay) {
                   }
 
                   let formattedDescription = room.mo_ta || 'Không có mô tả chi tiết.';
-                  formattedDescription = formattedDescription.replace(/\s*-\s*/g, '<br>- ');
+                  // Dùng <br style="display: block; margin: 4px 0;"> để chỉnh khoảng cách các dòng vừa khít, không bị xa nhau quá
+                  formattedDescription = formattedDescription.replace(/\s*-\s*/g, '<br style="display: block; margin: 4px 0;">- ');
 
                   const formatUtility = (val, suffix = ' đ') => {
                     if (!val && val !== 0) return 'Chưa có';
@@ -214,7 +212,6 @@ function renderApp(roomsToDisplay) {
                     return strVal;
                   };
 
-                  // Lấy link map riêng của từng phòng từ cột map_link trong Supabase
                   const mapUrl = room.map_link ? room.map_link : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(room.dia_chi || '')}`;
 
                   return `
@@ -254,10 +251,10 @@ function renderApp(roomsToDisplay) {
                           </div>
                         </div>
                         
-                        <!-- PHẦN MÔ TẢ ĐÃ ĐƯỢC TĂNG ĐỘ ĐẬM VÀ RÕ RÀNG HƠN -->
-                        <div style="background: #ffffff; padding: 16px 20px; border-radius: 14px; font-size: 14px; color: #0f172a; line-height: 1.7; border: 2px dashed #cbd5e1; word-break: break-word; font-weight: 600; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-                          <strong style="color: #1e3a8a; display: block; margin-bottom: 6px; font-size: 15px; font-weight: 900; letter-spacing: -0.2px;">📝 Mô tả chi tiết:</strong> 
-                          <span style="font-weight: 700; color: #334155;">${formattedDescription}</span>
+                        <!-- PHẦN MÔ TẢ ĐÃ GỌN GÀNG, KHOẢNG CÁCH VỪA VẮN -->
+                        <div style="background: #ffffff; padding: 14px 18px; border-radius: 14px; font-size: 14px; color: #0f172a; line-height: 1.5; border: 2px dashed #cbd5e1; word-break: break-word; font-weight: 600; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+                          <div style="color: #1e3a8a; margin-bottom: 6px; font-size: 15px; font-weight: 900; letter-spacing: -0.2px;">📝 Mô tả chi tiết:</div> 
+                          <div style="font-weight: 700; color: #334155;">${formattedDescription}</div>
                         </div>
                       </div>
                     </div>
