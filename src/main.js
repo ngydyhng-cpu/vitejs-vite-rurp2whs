@@ -12,7 +12,7 @@ let currentPriceFilter = 'all';
 let currentPeopleFilter = 'all';
 let activeImageIndices = {};
 let visitorCount = 0;
-let manualRentedCount = 0; // Biến lưu số phòng đã cho thuê bạn tự điền trong Supabase
+let manualRentedCount = 0; 
 let onlineCount = 1;
 
 let selectedRoomData = { id: null, name: null };
@@ -36,7 +36,6 @@ async function trackVisitor() {
   }
 }
 
-// LẤY SỐ LƯỢNG ĐÃ CHO THUÊ VÀ LƯỢT XEM TỪ BẢNG site_stats
 async function fetchManualStats() {
   try {
     const { data, error } = await supabase.from('site_stats').select('*').eq('id', 1).single();
@@ -174,7 +173,7 @@ function renderApp(roomsToDisplay) {
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
       * { box-sizing: border-box; }
-      body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; }
+      body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; }
       
       .room-card-responsive {
         display: grid;
@@ -238,7 +237,7 @@ function renderApp(roomsToDisplay) {
       </div>
     </div>
 
-    <div style="min-height: 100vh; padding: 15px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box;">
+    <div style="min-height: 100vh; padding: 15px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box; background: #f8fafc;">
       
       <header style="max-width: 950px; margin: 0 auto 20px auto; background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 22px 18px; border-radius: 16px; box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.05); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
         
@@ -257,6 +256,7 @@ function renderApp(roomsToDisplay) {
 
       </header>
 
+      <!-- KHỐI SỨ MỆNH -->
       <div style="max-width: 950px; margin: 0 auto 20px auto; width: 100%;">
         <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 18px 20px; border-radius: 16px; border: 1px solid #f472b6; box-shadow: 0 4px 15px rgba(219,39,119,0.06); position: relative;">
           <div style="position: absolute; top: -11px; left: 18px; background: #db2777; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Sứ mệnh của chúng tôi</div>
