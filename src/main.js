@@ -11,16 +11,16 @@ let allRooms = [];
 let currentPriceFilter = 'all';
 let currentPeopleFilter = 'all';
 let activeImageIndices = {};
-let onlineCount = 1; // Số người đang truy cập trực tiếp
+let onlineCount = 1;
 
 let selectedRoomData = { id: null, name: null };
 
-// Theo dõi người đang truy cập realtime bằng Supabase Presence
+// Theo dõi người đang trực tuyến (Realtime Presence)
 function trackOnlineUsers() {
   const roomChannel = supabase.channel('findroom_online_users', {
     config: {
       presence: {
-        key: 'user_' + Math.random().toString(36.substring(2, 9)),
+        key: 'user_' + Math.random().toString(36).substring(2, 9),
       },
     },
   });
@@ -28,11 +28,9 @@ function trackOnlineUsers() {
   roomChannel
     .on('presence', { event: 'sync' }, () => {
       const state = roomChannel.presenceState();
-      // Đếm tổng số client đang kết nối
       const totalOnline = Object.keys(state).length;
       onlineCount = totalOnline > 0 ? totalOnline : 1;
       
-      // Cập nhật trực tiếp lên giao diện nếu header đã render
       const onlineEl = document.getElementById('online-count-val');
       if (onlineEl) {
         onlineEl.innerText = onlineCount;
