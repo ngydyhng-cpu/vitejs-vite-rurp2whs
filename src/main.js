@@ -12,6 +12,7 @@ let currentPriceFilter = 'all';
 let currentPeopleFilter = 'all';
 let activeImageIndices = {};
 let visitorCount = 0;
+let manualRentedCount = 0; // Biến lưu số phòng đã cho thuê bạn tự điền trong Supabase
 let onlineCount = 1;
 
 let selectedRoomData = { id: null, name: null };
@@ -32,6 +33,19 @@ async function trackVisitor() {
     }
   } catch (err) {
     console.error('Không thể cập nhật lượt truy cập:', err);
+  }
+}
+
+// LẤY SỐ LƯỢNG ĐÃ CHO THUÊ VÀ LƯỢT XEM TỪ BẢNG site_stats
+async function fetchManualStats() {
+  try {
+    const { data, error } = await supabase.from('site_stats').select('*').eq('id', 1).single();
+    if (data) {
+      if (data.views !== undefined) visitorCount = data.views;
+      if (data.da_cho_thue !== undefined) manualRentedCount = data.da_cho_thue;
+    }
+  } catch (err) {
+    console.error('Lỗi lấy thông tin thống kê:', err);
   }
 }
 
@@ -108,6 +122,7 @@ window.submitBookingRequest = async function() {
 
 async function loadRooms() {
   await trackVisitor();
+  await fetchManualStats(); 
   trackOnlineUsers();
 
   const { data, error } = await supabase
@@ -154,11 +169,6 @@ function getFilteredRooms() {
 function renderApp(roomsToDisplay) {
   const appContainer = document.querySelector('#app');
   const schoolMapUrl = 'https://maps.app.goo.gl/6dHJdY1rpEsNK5QM7';
-
-  const rentedRoomsCount = allRooms.filter(r => {
-    const status = String(r.trang_thai || '').toLowerCase().trim();
-    return status === 'đã thuê' || status === 'da_thue' || status === 'rented';
-  }).length;
 
   appContainer.innerHTML = `
     <style>
@@ -211,7 +221,7 @@ function renderApp(roomsToDisplay) {
       }
     </style>
 
-    <!-- THANH TOPBAR TRÊN CÙNG: CÓ ĐỦ HOTLINE, ĐỊA CHỈ, LƯỢT XEM VÀ ĐÃ THUÊ -->
+    <!-- THANH TOPBAR TRÊN CÙNG -->
     <div style="background: #0f172a; color: #cbd5e1; font-size: 12.5px; padding: 8px 12px; width: 100%;">
       <div style="max-width: 950px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
         
@@ -222,7 +232,7 @@ function renderApp(roomsToDisplay) {
 
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-weight: 600;">
           <div>👁️ Lượt xem: <strong style="color: #38bdf8;">${visitorCount.toLocaleString()}</strong></div>
-          <div>🏠 Đã cho thuê: <strong style="color: #4ade80;">${rentedRoomsCount} phòng</strong></div>
+          <div>🏠 Đã cho thuê: <strong style="color: #4ade80;">${manualRentedCount} phòng</strong></div>
         </div>
 
       </div>
@@ -282,7 +292,7 @@ function renderApp(roomsToDisplay) {
         </div>
       </div>
 
-      <!-- ĐANG TRỰC TUYẾN: NẰM Ở CHÍNH GIỮA DƯỚI BỘ LỌC, TRÊN DANH SÁCH PHÒNG TRỌ -->
+      <!-- ĐANG TRỰC TUYẾN -->
       <div style="max-width: 950px; margin: 0 auto 20px auto; text-align: center; width: 100%;">
         <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #ffffff; padding: 8px 18px; border-radius: 30px; border: 1px solid #cbd5e1; font-size: 14px; font-weight: 700; color: #334155; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
           <span class="live-dot"></span>
@@ -364,8 +374,6 @@ function renderApp(roomsToDisplay) {
                   const roomNameForBooking = room.ten_phong || 'Phòng trọ';
                   const roomIdForBooking = room.id;
 
-                  const isRented = String(room.trang_thai || '').toLowerCase().trim() === 'đã thuê' || String(room.trang_thai || '').toLowerCase().trim() === 'da_thue';
-
                   return `
                     <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 18px; margin-bottom: 18px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); width: 100%; box-sizing: border-box;">
                       <div class="room-card-responsive" style="width: 100%;">
@@ -375,7 +383,6 @@ function renderApp(roomsToDisplay) {
                           <div>
                             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px;">
                               <h3 style="color: #0f172a; font-size: 22px; margin: 0; font-weight: 900; word-break: break-word; letter-spacing: -0.3px;">${roomNameForBooking}</h3>
-                              <span style="background: ${isRented ? '#fee2e2' : '#dcfce7'}; color: ${isRented ? '#991b1b' : '#166534'}; border: 1px solid ${isRented ? '#fecaca' : '#bbf7d0'}; font-size: 11.5px; font-weight: 800; padding: 4px 9px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;">${isRented ? 'Đã cho thuê' : 'Phòng trống'}</span>
                             </div>
 
                             <div style="font-size: 21px; color: #16a34a; font-weight: 900; margin-bottom: 10px;">
