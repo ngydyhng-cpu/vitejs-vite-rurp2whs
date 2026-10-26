@@ -234,27 +234,35 @@ function renderApp(roomsToDisplay) {
           </div>
         </div>
 
-        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px dashed #cbd5e1;">
-          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
-            <span>📍 Địa chỉ:</span> 
-            <a href="${schoolMapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 700;">đại học khoa học thái nguyên</a>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px dashed #cbd5e1;">
+          
+          <!-- Hàng thông tin bên trái -->
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
+              <span>📍 Địa chỉ:</span> 
+              <a href="${schoolMapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 700;">đại học khoa học thái nguyên</a>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
+              <span>📞 SĐT:</span> <span style="font-weight: 700; color: #1e293b;">0967711888</span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; color: #ffffff;">
+              <span>🔥</span> <span>Nhóm 5</span>
+            </div>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
-            <span>📞 SĐT:</span> <span style="font-weight: 700; color: #1e293b;">0967711888</span>
+          <!-- Góc phải phía dưới: Lượt xem và Đã cho thuê gom lại gọn gàng -->
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 7px 12px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13.5px; font-weight: 600;">
+              <span>👁️ Lượt xem:</span> <span style="color: #2563eb; font-weight: 700;">${visitorCount.toLocaleString()}</span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 7px 12px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13.5px; font-weight: 600;">
+              <span>🏠 Đã thuê:</span> <span style="color: #16a34a; font-weight: 700;">${rentedRoomsCount}</span>
+            </div>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
-            <span>👁️ Tổng lượt xem:</span> <span style="color: #2563eb; font-weight: 700;">${visitorCount.toLocaleString()}</span>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
-            <span>🏠 Đã cho thuê:</span> <span style="color: #2563eb; font-weight: 700;">${rentedRoomsCount} phòng</span>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; color: #ffffff;">
-            <span>🔥</span> <span>Nhóm 5</span>
-          </div>
         </div>
       </header>
 
