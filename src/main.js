@@ -128,14 +128,14 @@ function renderApp(roomsToDisplay) {
 
   appContainer.innerHTML = `
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
       * { box-sizing: border-box; }
       body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
       
       .room-card-responsive {
         display: grid;
-        grid-template-columns: 350px 1fr;
-        gap: 20px;
+        grid-template-columns: 360px 1fr;
+        gap: 24px;
         align-items: stretch;
       }
       
@@ -174,35 +174,35 @@ function renderApp(roomsToDisplay) {
           </div>
           
           <div style="flex-grow: 1; min-width: 240px;">
-            <h1 style="background: linear-gradient(135deg, #1e40af, #3b82f6, #6d28d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 38px; margin: 0 0 4px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1;">FindRoom</h1>
-            <div style="font-size: 13.5px; color: #0284c7; font-weight: 600; line-height: 1.4; background: #e0f2fe; display: inline-block; padding: 5px 12px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - trường ĐH Khoa học - ĐH Thái Nguyên</div>
+            <h1 style="background: linear-gradient(135deg, #1e40af, #3b82f6, #6d28d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 40px; margin: 0 0 4px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1;">FindRoom</h1>
+            <div style="font-size: 14px; color: #0284c7; font-weight: 700; line-height: 1.4; background: #e0f2fe; display: inline-block; padding: 5px 12px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - trường ĐH Khoa học - ĐH Thái Nguyên</div>
           </div>
         </div>
 
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px dashed #cbd5e1;">
-          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600;">
+          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
             <span>📍 Địa chỉ:</span> 
-            <a href="${schoolMapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 600;">Đại học Khoa học - ĐH Thái Nguyên</a>
+            <a href="${schoolMapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 700;">Đại học Khoa học - ĐH Thái Nguyên</a>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600;">
-            <span>📞 SĐT:</span> <span style="font-weight: 600; color: #1e293b;">0967711888</span>
+          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
+            <span>📞 SĐT:</span> <span style="font-weight: 700; color: #1e293b;">0967711888</span>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600;">
+          <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
             <span>👁️ Lượt xem:</span> <span style="color: #2563eb; font-weight: 700;">${visitorCount.toLocaleString()}</span>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; color: #ffffff;">
+          <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; color: #ffffff;">
             <span>🔥</span> <span>Nhóm 5</span>
           </div>
         </div>
       </header>
 
       <div style="max-width: 950px; margin: 0 auto 24px auto; width: 100%;">
-        <div style="background: #ffffff; padding: 20px 24px; border-radius: 16px; border: 1px solid #f472b6; box-shadow: 0 4px 15px rgba(219,39,119,0.05); position: relative;">
-          <div style="position: absolute; top: -11px; left: 20px; background: #db2777; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Sứ mệnh của chúng tôi</div>
-          <p style="color: #334155; font-size: 15px; line-height: 1.6; font-style: italic; font-weight: 500; text-align: center; margin: 4px 0 0 0;">
+        <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 22px 26px; border-radius: 16px; border: 2px solid #f472b6; box-shadow: 0 4px 15px rgba(219,39,119,0.08); position: relative;">
+          <div style="position: absolute; top: -12px; left: 20px; background: #db2777; color: #fff; font-size: 11.5px; font-weight: 800; padding: 3px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Sứ mệnh của chúng tôi</div>
+          <p style="color: #0f172a; font-size: 17px; line-height: 1.7; font-style: italic; font-weight: 900; text-align: center; margin: 4px 0 0 0;">
             "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn, đặc biệt là sinh viên năm nhất trường Đại học Khoa học - Thái Nguyên, dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
           </p>
         </div>
@@ -210,8 +210,8 @@ function renderApp(roomsToDisplay) {
 
       <div style="max-width: 950px; margin: 0 auto 24px auto; background: #ffffff; padding: 20px 24px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; border: 1px solid #cbd5e1; border-top: 5px solid #2563eb; width: 100%;">
         <div>
-          <label style="display: block; font-size: 13.5px; font-weight: 700; color: #1e3a8a; margin-bottom: 8px;">💰 Khoảng giá phòng</label>
-          <select id="filter-price" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14.5px; font-weight: 500; background: #f8fafc; color: #1e293b; cursor: pointer; font-family: inherit;">
+          <label style="display: block; font-size: 14px; font-weight: 700; color: #1e3a8a; margin-bottom: 8px;">💰 Khoảng giá phòng</label>
+          <select id="filter-price" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px; font-weight: 600; background: #f8fafc; color: #1e293b; cursor: pointer; font-family: inherit;">
             <option value="all">🌟 Tất cả mức giá</option>
             <option value="0-1000000">Dưới 1 triệu</option>
             <option value="1000000-2000000">1 triệu - 2 triệu</option>
@@ -223,8 +223,8 @@ function renderApp(roomsToDisplay) {
         </div>
 
         <div>
-          <label style="display: block; font-size: 13.5px; font-weight: 700; color: #1e3a8a; margin-bottom: 8px;">👥 Số lượng người ở</label>
-          <select id="filter-people" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14.5px; font-weight: 500; background: #f8fafc; color: #1e293b; cursor: pointer; font-family: inherit;">
+          <label style="display: block; font-size: 14px; font-weight: 700; color: #1e3a8a; margin-bottom: 8px;">👥 Số lượng người ở</label>
+          <select id="filter-people" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px; font-weight: 600; background: #f8fafc; color: #1e293b; cursor: pointer; font-family: inherit;">
             <option value="all">🌟 Tất cả số người</option>
             <option value="1">1 người</option>
             <option value="2">2 người</option>
@@ -235,10 +235,10 @@ function renderApp(roomsToDisplay) {
 
       <main style="max-width: 950px; margin: 0 auto; width: 100%;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;">
-          <h2 style="font-size: 19px; color: #1e3a8a; margin: 0; border-left: 5px solid #2563eb; padding-left: 10px; font-weight: 800;">
+          <h2 style="font-size: 20px; color: #1e3a8a; margin: 0; border-left: 5px solid #2563eb; padding-left: 10px; font-weight: 800;">
             Danh sách phòng trọ
           </h2>
-          <span style="font-size: 13px; background: #2563eb; color: #ffffff; padding: 5px 12px; border-radius: 20px; font-weight: 600;">
+          <span style="font-size: 13.5px; background: #2563eb; color: #ffffff; padding: 5px 14px; border-radius: 20px; font-weight: 700;">
             ✨ ${roomsToDisplay.length} phòng
           </span>
         </div>
@@ -262,10 +262,10 @@ function renderApp(roomsToDisplay) {
                       if (activeIdx >= imgUrls.length) activeIdx = 0;
 
                       imagesHtml = `
-                        <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 8px; width: 100%;">
+                        <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 10px; width: 100%;">
                           <div class="main-img-wrap">
                             <img src="${imgUrls[activeIdx]}" alt="Ảnh phòng" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                            <div style="position: absolute; top: 10px; left: 10px; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(4px); color: #fff; padding: 3px 9px; border-radius: 6px; font-size: 11.5px; font-weight: 600;">Ảnh ${activeIdx + 1}/${imgUrls.length}</div>
+                            <div style="position: absolute; top: 10px; left: 10px; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(4px); color: #fff; padding: 3px 9px; border-radius: 6px; font-size: 12px; font-weight: 600;">Ảnh ${activeIdx + 1}/${imgUrls.length}</div>
                           </div>
                           
                           ${
@@ -275,7 +275,7 @@ function renderApp(roomsToDisplay) {
                               ${imgUrls
                                 .map(
                                   (url, idx) => `
-                                <div onclick="window.changeRoomImage('${room.id}',${idx})" style="width: 52px; height: 52px; border-radius: 8px; border: ${idx === activeIdx ? '2px solid #2563eb' : '1px solid #cbd5e1'}; overflow: hidden; flex-shrink: 0; cursor: pointer; background: #fff;">
+                                <div onclick="window.changeRoomImage('${room.id}',${idx})" style="width: 56px; height: 56px; border-radius: 8px; border: ${idx === activeIdx ? '2px solid #2563eb' : '1px solid #cbd5e1'}; overflow: hidden; flex-shrink: 0; cursor: pointer; background: #fff;">
                                   <img src="${url}" alt="Thumbnail" style="width: 100%; height: 100%; object-fit: cover;" />
                                 </div>
                               `
@@ -308,37 +308,37 @@ function renderApp(roomsToDisplay) {
                   const roomIdForBooking = room.id;
 
                   return `
-                    <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 20px; margin-bottom: 20px; border-radius: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); width: 100%; box-sizing: border-box;">
+                    <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 22px; margin-bottom: 22px; border-radius: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); width: 100%; box-sizing: border-box;">
                       <div class="room-card-responsive" style="width: 100%;">
                         <div style="width: 100%;">${imagesHtml}</div>
                         
                         <div style="width: 100%; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
                           <div>
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 4px;">
-                              <h3 style="color: #0f172a; font-size: 21px; margin: 0; font-weight: 700; word-break: break-word; letter-spacing: -0.3px;">${roomNameForBooking}</h3>
-                              <span style="background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;">Phòng trống</span>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 6px;">
+                              <h3 style="color: #0f172a; font-size: 24px; margin: 0; font-weight: 900; word-break: break-word; letter-spacing: -0.3px;">${roomNameForBooking}</h3>
+                              <span style="background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; white-space: nowrap;">Phòng trống</span>
                             </div>
 
-                            <div style="font-size: 20px; color: #16a34a; font-weight: 800; margin-bottom: 10px;">
+                            <div style="font-size: 23px; color: #16a34a; font-weight: 900; margin-bottom: 12px;">
                               ${room.gia_phong ? Number(room.gia_phong).toLocaleString() + ' đ / tháng' : 'Liên hệ'}
                             </div>
                             
-                            <div style="display: grid; grid-template-columns: 1fr; gap: 6px; font-size: 13.5px; margin-bottom: 10px; color: #334155; background: #f8fafc; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; width: 100%; box-sizing: border-box; line-height: 1.45;">
-                              <div>📍 <strong style="color: #0f172a; font-weight: 600;">Địa chỉ:</strong> <a href="${mapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 600;">${room.dia_chi || 'Chưa có'}</a> ${room.khoang_cach ? `<span style="color: #dc2626; font-weight: 600;">(Cách trường: ${room.khoang_cach})</span>` : ''}</div>
-                              <div>📏 <strong style="color: #0f172a; font-weight: 600;">Diện tích:</strong> <span style="font-weight: 500; color: #475569;">${room.dien_tich ? room.dien_tich + ' m²' : 'Chưa có'}</span></div>
-                              <div>👥 <strong style="color: #0f172a; font-weight: 600;">Số người:</strong> <span style="font-weight: 500; color: #475569;">${room.so_nguoi || 'Chưa có'}</span></div>
-                              <div>⚡ <strong style="color: #0f172a; font-weight: 600;">Điện:</strong> <span style="font-weight: 500; color: #475569;">${formatUtility(room.gia_dien, ' đ/số')}</span></div>
-                              <div>💧 <strong style="color: #0f172a; font-weight: 600;">Nước:</strong> <span style="font-weight: 500; color: #475569;">${formatUtility(room.gia_nuoc, ' đ')}</span></div>
-                              <div>🛠️ <strong style="color: #0f172a; font-weight: 600;">Dịch vụ:</strong> <span style="font-weight: 500; color: #475569;">${formatUtility(room.dich_vu, ' đ')}</span></div>
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 9px; font-size: 15.5px; margin-bottom: 10px; color: #1e293b; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; width: 100%; box-sizing: border-box; line-height: 1.55; font-weight: 600;">
+                              <div>📍 <strong style="color: #0f172a; font-weight: 800;">Địa chỉ:</strong> <a href="${mapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 800;">${room.dia_chi || 'Chưa có'}</a> ${room.khoang_cach ? `<span style="color: #dc2626; font-weight: 800;">(Cách trường: ${room.khoang_cach})</span>` : ''}</div>
+                              <div>📏 <strong style="color: #0f172a; font-weight: 800;">Diện tích:</strong> <span style="font-weight: 700; color: #334155;">${room.dien_tich ? room.dien_tich + ' m²' : 'Chưa có'}</span></div>
+                              <div>👥 <strong style="color: #0f172a; font-weight: 800;">Số người:</strong> <span style="font-weight: 700; color: #334155;">${room.so_nguoi || 'Chưa có'}</span></div>
+                              <div>⚡ <strong style="color: #0f172a; font-weight: 800;">Điện:</strong> <span style="font-weight: 700; color: #334155;">${formatUtility(room.gia_dien, ' đ/số')}</span></div>
+                              <div>💧 <strong style="color: #0f172a; font-weight: 800;">Nước:</strong> <span style="font-weight: 700; color: #334155;">${formatUtility(room.gia_nuoc, ' đ')}</span></div>
+                              <div>🛠️ <strong style="color: #0f172a; font-weight: 800;">Dịch vụ:</strong> <span style="font-weight: 700; color: #334155;">${formatUtility(room.dich_vu, ' đ')}</span></div>
                             </div>
 
-                            <div style="background: #ffffff; padding: 10px 12px; border-radius: 10px; font-size: 13.5px; color: #334155; border: 1px dashed #cbd5e1; margin-bottom: 12px; box-sizing: border-box; line-height: 1.45;">
-                              <div style="color: #1e3a8a; margin-bottom: 2px; font-weight: 700;">📝 Mô tả chi tiết:</div> 
-                              <div style="font-weight: 500; color: #334155; word-break: break-word;">${formattedDescription}</div>
+                            <div style="background: #ffffff; padding: 12px 14px; border-radius: 10px; font-size: 15.5px; color: #1e293b; border: 1px dashed #cbd5e1; margin-bottom: 8px; box-sizing: border-box; line-height: 1.55; font-weight: 600;">
+                              <div style="color: #1e3a8a; margin-bottom: 4px; font-weight: 800;">📝 Mô tả chi tiết:</div> 
+                              <div style="font-weight: 700; color: #1e293b; word-break: break-word;">${formattedDescription}</div>
                             </div>
                           </div>
 
-                          <button onclick="window.openBookingModal('${roomIdForBooking}', '${roomNameForBooking.replace(/'/g, "\\'")}')" style="width: 100%; background: #2563eb; color: #ffffff; border: none; padding: 11px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.25); font-family: inherit; transition: background 0.2s;">
+                          <button onclick="window.openBookingModal('${roomIdForBooking}', '${roomNameForBooking.replace(/'/g, "\\'")}')" style="width: 100%; background: #2563eb; color: #ffffff; border: none; padding: 12px; border-radius: 10px; font-weight: 800; font-size: 15.5px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.25); font-family: inherit; transition: background 0.2s;">
                             📞 Đăng ký thuê / Tư vấn phòng ngay
                           </button>
                         </div>
@@ -354,13 +354,13 @@ function renderApp(roomsToDisplay) {
         <div style="background: #ffffff; max-width: 420px; width: 100%; padding: 26px; border-radius: 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #cbd5e1; box-sizing: border-box;">
           
           <h3 style="color: #0f172a; font-size: 20px; margin-top: 0; margin-bottom: 8px; font-weight: 800;">🏠 Đăng ký tư vấn phòng</h3>
-          <p style="color: #64748b; font-size: 13.5px; margin-bottom: 18px; line-height: 1.5; font-weight: 500;">
+          <p style="color: #64748b; font-size: 14px; margin-bottom: 18px; line-height: 1.5; font-weight: 500;">
             Nhập số điện thoại của bạn, nhóm FindRoom sẽ liên hệ lại ngay!
           </p>
 
           <div style="margin-bottom: 18px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">📱 Số điện thoại:</label>
-            <input type="tel" id="customer-sdt" placeholder="Ví dụ: 0912345678" style="width: 100%; padding: 11px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14.5px; font-weight: 500; box-sizing: border-box; font-family: inherit;" />
+            <label style="display: block; font-size: 13.5px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">📱 Số điện thoại:</label>
+            <input type="tel" id="customer-sdt" placeholder="Ví dụ: 0912345678" style="width: 100%; padding: 11px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px; font-weight: 500; box-sizing: border-box; font-family: inherit;" />
           </div>
 
           <div style="display: flex; gap: 10px;">
