@@ -172,8 +172,7 @@ function renderApp(roomsToDisplay) {
   appContainer.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-      * { box-sizing: border-box; }
-      body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fffbeb; color: #1e293b; }
+      html, body { margin: 0 !important; padding: 0 !important; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fffbeb; color: #1e293b; }
       
       .room-card-responsive {
         display: grid;
@@ -220,8 +219,8 @@ function renderApp(roomsToDisplay) {
       }
     </style>
 
-    <!-- THANH TOPBAR TRÊN CÙNG -->
-    <div style="background: #0f172a; color: #cbd5e1; font-size: 12.5px; padding: 8px 12px; width: 100%;">
+    <!-- THANH TOPBAR TRÊN CÙNG SÁT MÉP TRÊN -->
+    <div style="background: #0f172a; color: #cbd5e1; font-size: 12.5px; padding: 10px 12px; width: 100%; margin: 0; box-sizing: border-box;">
       <div style="max-width: 950px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
         
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
@@ -237,10 +236,10 @@ function renderApp(roomsToDisplay) {
       </div>
     </div>
 
-    <!-- NỀN NGOÀI TỔNG THỂ ẤM DỊU -->
-    <div style="min-height: 100vh; padding: 15px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box; background: #fffbeb;">
+    <!-- NỀN NGOÀI TỔNG THỂ DÍNH SÁT TOPBAR -->
+    <div style="min-height: 100vh; padding: 20px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box; background: #fffbeb;">
       
-      <!-- HEADER VỚI ẢNH NỀN ĐƯỢC LÀM ĐẬM RÕ NÉT HƠN -->
+      <!-- HEADER VỚI ẢNH NỀN RÕ ĐẬM -->
       <header style="max-width: 950px; margin: 0 auto 20px auto; background: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.55)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 22px 18px; border-radius: 16px; box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.15); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
         
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);"></div>
