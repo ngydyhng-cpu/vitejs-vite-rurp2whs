@@ -213,7 +213,7 @@ function renderApp(roomsToDisplay) {
 
     <div style="background: #f8fafc; min-height: 100vh; padding: 25px 15px; color: #1e293b; width: 100%; box-sizing: border-box;">
       
-      <header style="max-width: 950px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.7)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 28px 24px; border-radius: 20px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
+      <header style="max-width: 950px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 28px 24px; border-radius: 20px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
         
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);"></div>
         
@@ -234,36 +234,33 @@ function renderApp(roomsToDisplay) {
           </div>
         </div>
 
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px dashed #cbd5e1;">
-          
-          <!-- Hàng thông tin bên trái -->
-          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
-            <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
-              <span>📍 Địa chỉ:</span> 
-              <a href="${schoolMapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 700;">đại học khoa học thái nguyên</a>
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
-              <span>📞 SĐT:</span> <span style="font-weight: 700; color: #1e293b;">0967711888</span>
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; color: #ffffff;">
-              <span>🔥</span> <span>Nhóm 5</span>
-            </div>
+        <!-- DÒNG THƯƠNG HIỆU CHÍNH (ĐỊA CHỈ, SĐT, NHÓM 5) -->
+        <div style="margin-top: 20px; padding: 14px 18px; background: #ffffff; border-radius: 14px; border: 2px solid #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; color: #1e293b; font-size: 15px; font-weight: 700;">
+            <span>📍 Địa chỉ:</span> 
+            <a href="${schoolMapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 800;">đại học khoa học thái nguyên</a>
           </div>
 
-          <!-- Góc phải phía dưới: Lượt xem và Đã cho thuê gom lại gọn gàng -->
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 7px 12px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13.5px; font-weight: 600;">
-              <span>👁️ Lượt xem:</span> <span style="color: #2563eb; font-weight: 700;">${visitorCount.toLocaleString()}</span>
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 7px 12px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 13.5px; font-weight: 600;">
-              <span>🏠 Đã thuê:</span> <span style="color: #16a34a; font-weight: 700;">${rentedRoomsCount}</span>
-            </div>
+          <div style="display: flex; align-items: center; gap: 8px; color: #1e293b; font-size: 15px; font-weight: 700;">
+            <span>📞 Hotline:</span> 
+            <span style="font-weight: 800; color: #dc2626; background: #fef2f2; padding: 3px 10px; border-radius: 8px; border: 1px solid #fecaca;">0967711888</span>
           </div>
 
+          <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 800; color: #ffffff; shadow: 0 2px 6px rgba(0,0,0,0.1);">
+            <span>🔥</span> <span>Nhóm 5</span>
+          </div>
         </div>
+
+        <!-- DÒNG THÔNG SỐ PHỤ / QUẢNG CÁO (LƯỢT XEM & ĐÃ THUÊ) -->
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 12px; opacity: 0.85;">
+          <div style="font-size: 12.5px; color: #64748b; font-weight: 600; background: rgba(255,255,255,0.7); padding: 4px 10px; border-radius: 6px; border: 1px solid #e2e8f0;">
+            👁️ Tổng lượt xem: <strong style="color: #2563eb;">${visitorCount.toLocaleString()}</strong>
+          </div>
+          <div style="font-size: 12.5px; color: #64748b; font-weight: 600; background: rgba(255,255,255,0.7); padding: 4px 10px; border-radius: 6px; border: 1px solid #e2e8f0;">
+            🏠 Đã hỗ trợ thuê: <strong style="color: #16a34a;">${rentedRoomsCount} phòng</strong>
+          </div>
+        </div>
+
       </header>
 
       <div style="max-width: 950px; margin: 0 auto 24px auto; width: 100%;">
