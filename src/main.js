@@ -172,7 +172,7 @@ function renderApp(roomsToDisplay) {
   appContainer.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-      html, body { margin: 0 !important; padding: 0 !important; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fffbeb; color: #1e293b; }
+      * { box-sizing: border-box; }
       
       .room-card-responsive {
         display: grid;
@@ -236,7 +236,7 @@ function renderApp(roomsToDisplay) {
       </div>
     </div>
 
-    <!-- NỀN NGOÀI TỔNG THỂ DÍNH SÁT TOPBAR -->
+    <!-- NỀN NGOÀI TỔNG THỂ ẤM DỊU -->
     <div style="min-height: 100vh; padding: 20px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box; background: #fffbeb;">
       
       <!-- HEADER VỚI ẢNH NỀN RÕ ĐẬM -->
@@ -257,12 +257,12 @@ function renderApp(roomsToDisplay) {
 
       </header>
 
-      <!-- KHỐI SỨ MỆNH -->
+      <!-- KHỐI SỨ MỆNH ĐÃ CẬP NHẬT -->
       <div style="max-width: 950px; margin: 0 auto 20px auto; width: 100%;">
         <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 18px 20px; border-radius: 16px; border: 1px solid #f472b6; box-shadow: 0 4px 15px rgba(219,39,119,0.06); position: relative;">
           <div style="position: absolute; top: -11px; left: 18px; background: #db2777; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Sứ mệnh của chúng tôi</div>
           <p style="color: #1e293b; font-size: 15px; line-height: 1.65; font-style: italic; font-weight: 600; text-align: center; margin: 4px 0 0 0;">
-            "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn, đặc biệt là sinh viên năm nhất trường Đại học Khoa học - Thái Nguyên, dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
+            "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
           </p>
         </div>
       </div>
