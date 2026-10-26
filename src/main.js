@@ -164,7 +164,7 @@ function renderApp(roomsToDisplay) {
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
       * { box-sizing: border-box; }
-      body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+      body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; }
       
       .room-card-responsive {
         display: grid;
@@ -192,8 +192,8 @@ function renderApp(roomsToDisplay) {
       }
 
       .live-dot {
-        width: 9px;
-        height: 9px;
+        width: 10px;
+        height: 10px;
         background-color: #16a34a;
         border-radius: 50%;
         display: inline-block;
@@ -211,44 +211,43 @@ function renderApp(roomsToDisplay) {
       }
     </style>
 
-    <div style="background: #f8fafc; min-height: 100vh; padding: 25px 15px; color: #1e293b; width: 100%; box-sizing: border-box;">
+    <!-- THANH TOPBAR TRÊN CÙNG -->
+    <div style="background: #0f172a; color: #cbd5e1; font-size: 13px; padding: 8px 16px; width: 100%;">
+      <div style="max-width: 950px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;">
+        
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
+          <div>📞 Hotline: <strong style="color: #ffffff;">0967711888</strong></div>
+          <div>📍 Địa chỉ: <a href="${schoolMapUrl}" target="_blank" style="color: #38bdf8; text-decoration: underline;">Đại học Khoa học Thái Nguyên</a></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; font-weight: 600;">
+          <div>👁️ Lượt xem: <strong style="color: #38bdf8;">${visitorCount.toLocaleString()}</strong></div>
+          <div>🏠 Đã cho thuê: <strong style="color: #4ade80;">${rentedRoomsCount} phòng</strong></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="min-height: 100vh; padding: 20px 15px 40px 15px; color: #1e293b; width: 100%; box-sizing: border-box;">
       
-      <header style="max-width: 950px; margin: 0 auto 20px auto; background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 28px 24px; border-radius: 20px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
+      <header style="max-width: 950px; margin: 0 auto 24px auto; background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 28px 24px; border-radius: 20px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
         
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);"></div>
 
-        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
           <div style="background: rgba(255, 255, 255, 0.95); padding: 8px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
             <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 75px; height: 75px; object-fit: contain; flex-shrink: 0;" />
           </div>
           
-          <div style="flex-grow: 1; min-width: 240px;">
+          <div>
             <h1 style="background: linear-gradient(135deg, #1e40af, #3b82f6, #6d28d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 40px; margin: 0 0 4px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1;">FindRoom</h1>
             <div style="font-size: 14px; color: #0284c7; font-weight: 700; line-height: 1.4; background: #e0f2fe; display: inline-block; padding: 5px 12px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - đại học khoa học thái nguyên</div>
           </div>
         </div>
 
-        <!-- DÒNG THƯƠNG HIỆU CHÍNH (ĐỊA CHỈ, HOTLINE, NHÓM 5) -->
-        <div style="margin-top: 20px; padding: 14px 18px; background: #ffffff; border-radius: 14px; border: 2px solid #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
-          <div style="display: flex; align-items: center; gap: 8px; color: #1e293b; font-size: 15px; font-weight: 700;">
-            <span>📍 Địa chỉ:</span> 
-            <a href="${schoolMapUrl}" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 800;">đại học khoa học thái nguyên</a>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 8px; color: #1e293b; font-size: 15px; font-weight: 700;">
-            <span>📞 Hotline:</span> 
-            <span style="font-weight: 800; color: #dc2626; background: #fef2f2; padding: 3px 10px; border-radius: 8px; border: 1px solid #fecaca;">0967711888</span>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 800; color: #ffffff;">
-            <span>🔥</span> <span>Nhóm 5</span>
-          </div>
-        </div>
-
       </header>
 
-      <!-- KHỐI SLOGAN SỨ MỆNH -->
-      <div style="max-width: 950px; margin: 0 auto 12px auto; width: 100%;">
+      <div style="max-width: 950px; margin: 0 auto 24px auto; width: 100%;">
         <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 22px 26px; border-radius: 16px; border: 1px solid #f472b6; box-shadow: 0 4px 15px rgba(219,39,119,0.06); position: relative;">
           <div style="position: absolute; top: -12px; left: 20px; background: #db2777; color: #fff; font-size: 11.5px; font-weight: 800; padding: 3px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Sứ mệnh của chúng tôi</div>
           <p style="color: #1e293b; font-size: 16px; line-height: 1.75; font-style: italic; font-weight: 600; text-align: center; margin: 4px 0 0 0; letter-spacing: 0.2px;">
@@ -257,25 +256,8 @@ function renderApp(roomsToDisplay) {
         </div>
       </div>
 
-      <!-- THANH THỐNG KÊ PHỤ (ĐẶT DƯỚI SLOGAN SỨ MỆNH): TRỰC TUYẾN, LƯỢT XEM, ĐÃ THUÊ -->
-      <div style="max-width: 950px; margin: 0 auto 24px auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; width: 100%;">
-        <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 6px 14px; border-radius: 20px; border: 1px solid #cbd5e1; font-size: 13px; font-weight: 700; color: #475569; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
-          <span class="live-dot"></span>
-          <span>Đang truy cập: <strong id="online-count-val" style="color: #16a34a;">${onlineCount}</strong></span>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 6px 14px; border-radius: 20px; border: 1px solid #cbd5e1; font-size: 13px; font-weight: 700; color: #475569; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
-          <span>👁️ Lượt xem:</span>
-          <strong style="color: #2563eb;">${visitorCount.toLocaleString()}</strong>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 6px 14px; border-radius: 20px; border: 1px solid #cbd5e1; font-size: 13px; font-weight: 700; color: #475569; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
-          <span>🏠 Đã cho thuê:</span>
-          <strong style="color: #16a34a;">${rentedRoomsCount} phòng</strong>
-        </div>
-      </div>
-
-      <div style="max-width: 950px; margin: 0 auto 24px auto; background: #ffffff; padding: 20px 24px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; border: 1px solid #cbd5e1; border-top: 5px solid #2563eb; width: 100%;">
+      <!-- KHỐI BỘ LỌC TÌM KIẾM -->
+      <div style="max-width: 950px; margin: 0 auto 16px auto; background: #ffffff; padding: 20px 24px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; border: 1px solid #cbd5e1; border-top: 5px solid #2563eb; width: 100%;">
         <div>
           <label style="display: block; font-size: 14px; font-weight: 700; color: #1e3a8a; margin-bottom: 8px;">💰 Khoảng giá phòng</label>
           <select id="filter-price" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px; font-weight: 600; background: #f8fafc; color: #1e293b; cursor: pointer; font-family: inherit;">
@@ -297,6 +279,14 @@ function renderApp(roomsToDisplay) {
             <option value="2">2 người</option>
             <option value="3">3 người</option>
           </select>
+        </div>
+      </div>
+
+      <!-- KHỐI ĐANG TRỰC TUYẾN: NẰM Ở CHÍNH GIỮA CỦA TRANG (DƯỚI BỘ LỌC, TRÊN DANH SÁCH PHÒNG) -->
+      <div style="max-width: 950px; margin: 0 auto 24px auto; text-align: center; width: 100%;">
+        <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #ffffff; padding: 10px 22px; border-radius: 30px; border: 1px solid #cbd5e1; font-size: 14.5px; font-weight: 700; color: #334155; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <span class="live-dot"></span>
+          <span>Đang trực tuyến: <strong id="online-count-val" style="color: #16a34a; font-weight: 800; font-size: 16px;">${onlineCount}</strong> người</span>
         </div>
       </div>
 
