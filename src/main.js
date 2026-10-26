@@ -200,9 +200,9 @@ function renderApp(roomsToDisplay) {
       </header>
 
       <div style="max-width: 950px; margin: 0 auto 24px auto; width: 100%;">
-        <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 22px 26px; border-radius: 16px; border: 2px solid #f472b6; box-shadow: 0 4px 15px rgba(219,39,119,0.08); position: relative;">
+        <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 22px 26px; border-radius: 16px; border: 1px solid #f472b6; box-shadow: 0 4px 15px rgba(219,39,119,0.06); position: relative;">
           <div style="position: absolute; top: -12px; left: 20px; background: #db2777; color: #fff; font-size: 11.5px; font-weight: 800; padding: 3px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Sứ mệnh của chúng tôi</div>
-          <p style="color: #0f172a; font-size: 17px; line-height: 1.7; font-style: italic; font-weight: 900; text-align: center; margin: 4px 0 0 0;">
+          <p style="color: #1e293b; font-size: 16px; line-height: 1.75; font-style: italic; font-weight: 600; text-align: center; margin: 4px 0 0 0; letter-spacing: 0.2px;">
             "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn, đặc biệt là sinh viên năm nhất trường Đại học Khoa học - Thái Nguyên, dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
           </p>
         </div>
