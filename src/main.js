@@ -173,7 +173,7 @@ function renderApp(roomsToDisplay) {
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
       * { box-sizing: border-box; }
-      body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; }
+      body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fffbeb; color: #1e293b; }
       
       .room-card-responsive {
         display: grid;
@@ -191,7 +191,7 @@ function renderApp(roomsToDisplay) {
         border-radius: 12px;
         overflow: hidden;
         position: relative;
-        border: 1px solid #e2e8f0;
+        border: 1px solid #cbd5e1;
       }
 
       @keyframes pulse-green {
@@ -237,20 +237,22 @@ function renderApp(roomsToDisplay) {
       </div>
     </div>
 
-    <div style="min-height: 100vh; padding: 15px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box; background: #f8fafc;">
+    <!-- NỀN NGOÀI TỔNG THỂ ẤM DỊU -->
+    <div style="min-height: 100vh; padding: 15px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box; background: #fffbeb;">
       
-      <header style="max-width: 950px; margin: 0 auto 20px auto; background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 22px 18px; border-radius: 16px; box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.05); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
+      <!-- HEADER VỚI ẢNH NỀN ĐƯỢC LÀM ĐẬM RÕ NÉT HƠN -->
+      <header style="max-width: 950px; margin: 0 auto 20px auto; background: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.55)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 22px 18px; border-radius: 16px; box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.15); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
         
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);"></div>
 
         <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-          <div style="background: rgba(255, 255, 255, 0.95); padding: 6px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+          <div style="background: rgba(255, 255, 255, 0.95); padding: 6px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;">
             <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 65px; height: 65px; object-fit: contain; flex-shrink: 0;" />
           </div>
           
           <div style="flex-grow: 1; min-width: 200px;">
             <h1 style="background: linear-gradient(135deg, #1e40af, #3b82f6, #6d28d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 34px; margin: 0 0 2px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1;">FindRoom</h1>
-            <div style="font-size: 13px; color: #0284c7; font-weight: 700; line-height: 1.4; background: #e0f2fe; display: inline-block; padding: 4px 10px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - Đại học Khoa học Thái Nguyên</div>
+            <div style="font-size: 13px; color: #0284c7; font-weight: 700; line-height: 1.4; background: rgba(255, 255, 255, 0.9); display: inline-block; padding: 4px 10px; border-radius: 20px; border: 1px solid #bae6fd;">🎓 Đối tượng: Sinh viên năm 1 - Đại học Khoa học Thái Nguyên</div>
           </div>
         </div>
 
