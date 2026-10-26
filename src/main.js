@@ -11,11 +11,30 @@ let allRooms = [];
 let currentPriceFilter = 'all';
 let currentPeopleFilter = 'all';
 let activeImageIndices = {};
+let visitorCount = 0;
 let onlineCount = 1;
 
 let selectedRoomData = { id: null, name: null };
 
-// Theo dõi người đang trực tuyến (Realtime Presence)
+async function trackVisitor() {
+  try {
+    const hasVisited = sessionStorage.getItem('findroom_visited');
+    
+    if (!hasVisited) {
+      const { data, error } = await supabase.rpc('increment_visitor_count');
+      if (!error && data !== null) {
+        visitorCount = data;
+        sessionStorage.setItem('findroom_visited', 'true');
+      }
+    } else {
+      const { data } = await supabase.from('site_stats').select('views').eq('id', 1).single();
+      if (data) visitorCount = data.views;
+    }
+  } catch (err) {
+    console.error('Không thể cập nhật lượt truy cập:', err);
+  }
+}
+
 function trackOnlineUsers() {
   const roomChannel = supabase.channel('findroom_online_users', {
     config: {
@@ -88,6 +107,7 @@ window.submitBookingRequest = async function() {
 };
 
 async function loadRooms() {
+  await trackVisitor();
   trackOnlineUsers();
 
   const { data, error } = await supabase
@@ -165,6 +185,21 @@ function renderApp(roomsToDisplay) {
         border: 1px solid #e2e8f0;
       }
 
+      @keyframes pulse-green {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+      }
+
+      .live-dot {
+        width: 9px;
+        height: 9px;
+        background-color: #16a34a;
+        border-radius: 50%;
+        display: inline-block;
+        animation: pulse-green 2s infinite;
+      }
+
       @media (max-width: 768px) {
         .room-card-responsive {
           grid-template-columns: 1fr !important;
@@ -182,7 +217,13 @@ function renderApp(roomsToDisplay) {
         
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);"></div>
         
-        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <!-- Góc phải phía trên: Đèn xanh + Số người online -->
+        <div style="position: absolute; top: 15px; right: 20px; display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 5px 10px; border-radius: 20px; border: 1px solid #cbd5e1; font-size: 13.5px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+          <span class="live-dot"></span>
+          <span id="online-count-val" style="color: #16a34a;">${onlineCount}</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 5px;">
           <div style="background: rgba(255, 255, 255, 0.95); padding: 8px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
             <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 75px; height: 75px; object-fit: contain; flex-shrink: 0;" />
           </div>
@@ -204,7 +245,7 @@ function renderApp(roomsToDisplay) {
           </div>
 
           <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
-            <span>🟢 Đang truy cập:</span> <span id="online-count-val" style="color: #16a34a; font-weight: 700;">${onlineCount}</span>
+            <span>👁️ Tổng lượt xem:</span> <span style="color: #2563eb; font-weight: 700;">${visitorCount.toLocaleString()}</span>
           </div>
 
           <div style="display: flex; align-items: center; gap: 6px; background: #ffffff; padding: 8px 14px; border-radius: 10px; border: 1px solid #cbd5e1; color: #334155; font-size: 14px; font-weight: 600;">
