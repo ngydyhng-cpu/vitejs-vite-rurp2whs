@@ -211,7 +211,7 @@ function renderApp(roomsToDisplay) {
       }
     </style>
 
-    <!-- THANH TOPBAR TRÊN CÙNG: CHỈ GIỮ LẠI HOTLINE, ĐỊA CHỈ, LƯỢT XEM VÀ ĐÃ THUÊ -->
+    <!-- THANH TOPBAR TRÊN CÙNG: CÓ ĐỦ HOTLINE, ĐỊA CHỈ, LƯỢT XEM VÀ ĐÃ THUÊ -->
     <div style="background: #0f172a; color: #cbd5e1; font-size: 12.5px; padding: 8px 12px; width: 100%;">
       <div style="max-width: 950px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
         
@@ -221,8 +221,8 @@ function renderApp(roomsToDisplay) {
         </div>
 
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-weight: 600;">
-          <div>👁️ Xem: <strong style="color: #38bdf8;">${visitorCount.toLocaleString()}</strong></div>
-          <div>🏠 Thuê: <strong style="color: #4ade80;">${rentedRoomsCount}</strong></div>
+          <div>👁️ Lượt xem: <strong style="color: #38bdf8;">${visitorCount.toLocaleString()}</strong></div>
+          <div>🏠 Đã cho thuê: <strong style="color: #4ade80;">${rentedRoomsCount} phòng</strong></div>
         </div>
 
       </div>
@@ -282,7 +282,7 @@ function renderApp(roomsToDisplay) {
         </div>
       </div>
 
-      <!-- ĐANG TRỰC TUYẾN: NẰM Ở CHÍNH GIỮA DƯỚI BỘ LỌC, TRÊN DANH SÁCH PHÒNG -->
+      <!-- ĐANG TRỰC TUYẾN: NẰM Ở CHÍNH GIỮA DƯỚI BỘ LỌC, TRÊN DANH SÁCH PHÒNG TRỌ -->
       <div style="max-width: 950px; margin: 0 auto 20px auto; text-align: center; width: 100%;">
         <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #ffffff; padding: 8px 18px; border-radius: 30px; border: 1px solid #cbd5e1; font-size: 14px; font-weight: 700; color: #334155; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
           <span class="live-dot"></span>
