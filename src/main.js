@@ -236,8 +236,8 @@ function renderApp(roomsToDisplay) {
       </div>
     </div>
 
-    <!-- NỀN NGOÀI TỔNG THỂ ẤM DỊU -->
-    <div style="min-height: 100vh; padding: 20px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box; background: #fffbeb;">
+    <!-- NỀN CAM KEM PASTEL NHẸ DỊU (#fff3e0) -->
+    <div style="min-height: 100vh; padding: 20px 12px 40px 12px; color: #1e293b; width: 100%; box-sizing: border-box; background: #fff3e0;">
       
       <!-- HEADER VỚI ẢNH NỀN RÕ ĐẬM -->
       <header style="max-width: 950px; margin: 0 auto 20px auto; background: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.55)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 22px 18px; border-radius: 16px; box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.15); border: 1px solid #cbd5e1; position: relative; overflow: hidden; width: 100%;">
@@ -259,8 +259,8 @@ function renderApp(roomsToDisplay) {
 
       <!-- KHỐI SỨ MỆNH ĐÃ CẬP NHẬT -->
       <div style="max-width: 950px; margin: 0 auto 20px auto; width: 100%;">
-        <div style="background: linear-gradient(135deg, #ffffff 0%, #fdf4ff 100%); padding: 18px 20px; border-radius: 16px; border: 1px solid #f472b6; box-shadow: 0 4px 15px rgba(219,39,119,0.06); position: relative;">
-          <div style="position: absolute; top: -11px; left: 18px; background: #db2777; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Sứ mệnh của chúng tôi</div>
+        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff3e0 100%); padding: 18px 20px; border-radius: 16px; border: 1px solid #fed7aa; box-shadow: 0 4px 15px rgba(234,88,12,0.06); position: relative;">
+          <div style="position: absolute; top: -11px; left: 18px; background: #ea580c; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Sứ mệnh của chúng tôi</div>
           <p style="color: #1e293b; font-size: 15px; line-height: 1.65; font-style: italic; font-weight: 600; text-align: center; margin: 4px 0 0 0;">
             "Sứ mệnh của FindRoom là giúp sinh viên tìm được nơi ở phù hợp, an toàn và thuận tiện với mức giá hợp lý. Mình mong muốn giúp các bạn dễ dàng tìm kiếm và lựa chọn chỗ ở có giá cả và dịch vụ phù hợp với nhu cầu, tránh mất nhiều thời gian và gặp khó khăn khi tìm trọ."
           </p>
