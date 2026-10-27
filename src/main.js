@@ -246,7 +246,7 @@ function renderApp(roomsToDisplay) {
 
         <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
           <div style="background: rgba(255, 255, 255, 0.95); padding: 6px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;">
-            <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/OIP.jpg" alt="Logo TNUS" style="width: 65px; height: 65px; object-fit: contain; flex-shrink: 0;" />
+            <img src="https://tjfjzmyedgwkanbifots.supabase.co/storage/v1/object/public/rooms/1793058603314_128824623381746214_4185824012501022712_7b9d923a8d1fb2038909a3be361cd3c2.jpg" alt="Logo TNUS" style="width: 65px; height: 65px; object-fit: contain; flex-shrink: 0;" />
           </div>
           
           <div style="flex-grow: 1; min-width: 200px;">
